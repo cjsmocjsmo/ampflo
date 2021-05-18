@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        children: const <Widget> [
+        children: <Widget> [
           Center(
             child: ElevatedButton(
               child: Text('go to playlists'),
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
 
-        ]),
+        ]);
       ),
       
     );
