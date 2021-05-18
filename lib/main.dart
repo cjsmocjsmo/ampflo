@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Ampflo());
+void main() {
+  runApp(
+    MaterialApp(
+      title: 'Ampflow'
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/Playlists': (context) => PlayListsScreen(),
+        '/Songs': (context) => SongsScreen(),
 
-class Ampflo extends StatelessWidget{
-  @override 
-  Widget build(BuildContext, context) {
-    return MaterialApp(
-      onGenerateRoute: (settings) {
-        if (settings.name == "/") {
-          return MaterialPageRoute(builder: (context) => HomeScreen());
-        }
-        var uri = Uri.parse(settings.name);
-        if (uri.pathSegments.length == 2 &&
-          uri.pathSegments.first == 'playlists') {
-            var id = uri.pathSegments[1];
-            return MaterialPageRoute(builder: (context) => PlayListScreen(id: id));
-        }
-        return MaterialPageRoute(builder: (context) => UnknownScreen());
       }
-    );
-  }
+    ),
+  );
 }
+
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -29,11 +24,22 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: FlatButton(
-          child: Text('View Details'),
+          child: Text('go to playlists'),
           onPressed: () {
             Navigator.pushNamed(
               context,
-              '/details/1',
+              '/Playlists',
+            );
+          },
+        ),
+      ),
+      Center(
+        child: FlatButton(
+          child: Text('go to songs page'),
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/Songs',
             );
           },
         ),
@@ -43,12 +49,6 @@ class HomeScreen extends StatelessWidget {
 }
 
 class PlayListsScreen extends StatelessWidget {
-  String id;
-
-  PlayListsScreen({
-    this.id,
-  });
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,18 +71,39 @@ class PlayListsScreen extends StatelessWidget {
   }
 }
 
-
-class UnknownScreen extends StatelessWidget {
+class SongsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text('404!'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Viewing songs page'),
+            FlatButton(
+              child: Text('Pop!'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+// class UnknownScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(),
+//       body: Center(
+//         child: Text('404!'),
+//       ),
+//     );
+//   }
+// }
 
 // class MyApp extends StatelessWidget {
 //   // This widget is the root of your application.
