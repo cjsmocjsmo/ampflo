@@ -48,9 +48,9 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.add_alert),
               tooltip: 'Show Snackbar',
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                    backgroundColor: Theme.of(context).colorScheme.background));
+                    backgroundColor: Theme.of(context).colorScheme.card));
               },
             ),
             IconButton(
@@ -62,8 +62,9 @@ class HomeScreen extends StatelessWidget {
                     return Scaffold(
                       appBar: AppBar(
                           title: const Text('Songs'),
-                          backgroundColor: Theme.of(context).colorScheme.background,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
                           // backgroundColor: Colors.lightGreen.shade900),
+                      ),
                       body: const Center(
                         child: Text(
                           'This is songs page',
@@ -80,7 +81,8 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.lightGreenAccent.shade400,
+          color: Theme.of(context).colorScheme.accent,
+          // color: Colors.lightGreenAccent.shade400,
         ),
         child: Column(
           children: <Widget>[
@@ -121,7 +123,7 @@ class PlayListsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
       body: Center(
         child: Column(
@@ -146,7 +148,7 @@ class SongsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
       body: Center(
         child: Column(
