@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
         '/Songs': (context) => SongsScreen(),
 
       }
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.lightGreen[900],
+        accentColor: Colors.cyan[600],
+        fontFamily: 'Georgia'
+      ),
     );
   }
 }
@@ -27,7 +33,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(),
       appBar: AppBar(
-          backgroundColor: Colors.lightGreen.shade900,
+          // backgroundColor: Colors.lightGreen.shade900,
           title: Text(
             "Ampflo",
             style: TextStyle(color: Colors.black87),
@@ -70,80 +76,37 @@ class HomeScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.lightGreenAccent.shade400,
         ),
-        child: 
-        Column(
+        child: Column(
           children: <Widget>[
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget> [
-                  ElevatedButton(
-                    child: Text('go to playlists'),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Playlists',
-                      );
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('go to songs page'),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                      );
-                    },
-                  ),
-                ]
-              )
-            
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget> [
+                ElevatedButton(
+                  child: Text('go to playlists'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Playlists',
+                    );
+                  },
+                ),
+                ElevatedButton(
+                  child: Text('go to songs page'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Songs',
+                    );
+                  },
+                ),
+              ]
+            )
           ]
-          
-
-
-
-
-
         )
-          
-        
-
-
-
-
       )
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
