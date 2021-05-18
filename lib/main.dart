@@ -70,28 +70,39 @@ class HomeScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.lightGreenAccent.shade400,
         ),
-        child: Row(
-          children: <Widget> [
-            ElevatedButton(
-              child: Text('go to playlists'),
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/Playlists',
-                );
-              },
-            ),
-            ElevatedButton(
-              child: Text('go to songs page'),
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/Songs',
-                );
-              },
-            ),
-          ]
+        child: 
+        Column(
+          Center(
+            Row(
+              children: <Widget> [
+                ElevatedButton(
+                  child: Text('go to playlists'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Playlists',
+                    );
+                  },
+                ),
+                ElevatedButton(
+                  child: Text('go to songs page'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Songs',
+                    );
+                  },
+                ),
+              ]
+            )
+          )
         )
+          
+        
+
+
+
+
       )
     );
   }
