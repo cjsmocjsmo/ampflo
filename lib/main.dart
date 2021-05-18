@@ -4,7 +4,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = "ampflo";
+  static const String _title = "Ampflo";
 
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +26,46 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      appBar: AppBar(
+          backgroundColor: Colors.lightGreen.shade900,
+          title: Text(
+            "Ampflo",
+            style: TextStyle(color: Colors.black87),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.add_alert),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
+                    backgroundColor: Colors.blueGrey));
+              },
+            ),
+            IconButton(
+                icon: const Icon(Icons.navigate_next),
+                tooltip: "Go to next page",
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute<void>(builder: (BuildContext context) {
+                    return Scaffold(
+                      appBar: AppBar(
+                          title: const Text('Songs'),
+                          backgroundColor: Colors.lightGreen.shade900),
+                      body: const Center(
+                        child: Text(
+                          'This is songs page',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                      ),
+                    );
+                  }
+                )
+              );
+            }
+          )
+        ]
+      ),
       body: Column(
         children: <Widget> [
           Center(
