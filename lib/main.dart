@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         '/Playlists': (context) => PlayListsScreen(),
         '/Songs': (context) => SongsScreen(),
 
-      }
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.lightGreen,
@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(),
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.backgroundColor
           // backgroundColor: Colors.lightGreen.shade900,
           title: Text(
             "Ampflo",
