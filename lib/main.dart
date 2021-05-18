@@ -6,7 +6,7 @@ class Ampflo extends StatelessWidget{
   @override 
   Widget build(BuildContext, context) {
     return MaterialApp(
-      onGeneratRoute: (settings) {
+      onGenerateRoute: (settings) {
         if (settings.name == "/") {
           return MaterialPageRoute(builder: (context) => HomeScreen());
         }
