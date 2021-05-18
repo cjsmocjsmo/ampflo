@@ -66,10 +66,13 @@ class HomeScreen extends StatelessWidget {
           )
         ]
       ),
-      body: Column(
-        children: <Widget> [
-          Center(
-            child: ElevatedButton(
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.lightGreenAccent.shade400,
+        ),
+        child: Row(
+          children: <Widget> [
+            ElevatedButton(
               child: Text('go to playlists'),
               onPressed: () {
                 Navigator.pushNamed(
@@ -78,9 +81,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-          ),
-          Center(
-            child: ElevatedButton(
+            ElevatedButton(
               child: Text('go to songs page'),
               onPressed: () {
                 Navigator.pushNamed(
@@ -89,12 +90,43 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-          ),
-        ]
-      )
-    );
+            
+          ]
+        )
+      );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class PlayListsScreen extends StatelessWidget {
   @override
