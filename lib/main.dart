@@ -27,28 +27,30 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        Center(
-          child: ElevatedButton(
-            child: Text('go to playlists'),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/Playlists',
-              );
-            },
+        children: const <Widget> [
+          Center(
+            child: ElevatedButton(
+              child: Text('go to playlists'),
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/Playlists',
+                );
+              },
+            ),
           ),
-        ),
-        Center(
-          child: ElevatedButton(
-            child: Text('go to songs page'),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/Songs',
-              );
-            },
-          ),
-        ),
+          Center(
+            child: ElevatedButton(
+              child: Text('go to songs page'),
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/Songs',
+                );
+              },
+            ),
+
+        ]),
       ),
       
     );
