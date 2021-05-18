@@ -42,10 +42,10 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class DetailScreen extends StatelessWidget {
+class PlayListsScreen extends StatelessWidget {
   String id;
 
-  DetailScreen({
+  PlayListsScreen({
     this.id,
   });
 
