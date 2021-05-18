@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Ampflow'
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static const String _title = "ampflo";
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
@@ -11,9 +16,10 @@ void main() {
         '/Songs': (context) => SongsScreen(),
 
       }
-    ),
-  );
+    );
+  }
 }
+
 
 class HomeScreen extends StatelessWidget {
   @override
