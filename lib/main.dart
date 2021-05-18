@@ -26,9 +26,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
+      body: Column(
         Center(
-          child: FlatButton(
+          child: ElevatedButton(
             child: Text('go to playlists'),
             onPressed: () {
               Navigator.pushNamed(
@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         Center(
-          child: FlatButton(
+          child: ElevatedButton(
             child: Text('go to songs page'),
             onPressed: () {
               Navigator.pushNamed(
@@ -64,8 +64,8 @@ class PlayListsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Viewing details for item $id'),
-            FlatButton(
+            Text('Viewing playlist page'),
+            ElevatedButton(
               child: Text('Pop!'),
               onPressed: () {
                 Navigator.pop(context);
@@ -88,7 +88,7 @@ class SongsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Viewing songs page'),
-            FlatButton(
+            ElevatedButton(
               child: Text('Pop!'),
               onPressed: () {
                 Navigator.pop(context);
