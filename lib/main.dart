@@ -73,9 +73,8 @@ class HomeScreen extends StatelessWidget {
         child: 
         Column(
           children: <Widget>[
-            Center(
-              mainAxisAlignment: MainAxisAlignment.center,
-              child: Row(
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget> [
                   ElevatedButton(
                     child: Text('go to playlists'),
@@ -97,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ]
               )
-            )
+            
           ]
           
 
