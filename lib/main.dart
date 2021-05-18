@@ -71,6 +71,7 @@ class DetailScreen extends StatelessWidget {
   }
 }
 
+
 class UnknownScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
