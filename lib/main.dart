@@ -18,8 +18,11 @@ class MyApp extends StatelessWidget {
       }
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.lightGreen[900],
-          secondarySwatch: Colors.cyan[500],
+          primarySwatch: Colors.lightGreen,
+          primaryColorDark: Colors.lightGreen[900],
+          accentColor: Colors.cyan[500],
+          cardColor: Colors.amber[300],
+          errorColor: Colors.red,
           backgroundColor: Colors.lightGreen[400],
           )
       ),
