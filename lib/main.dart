@@ -13,7 +13,7 @@ class Ampflo extends StatelessWidget{
         var uri = Uri.parse(settings.name);
         if (uri.pathSegments.length == 2 &&
           uri.pathSegments.first == 'playlists') {
-            var id = uri.pathSegments[1]
+            var id = uri.pathSegments[1];
             return MaterialPageRoute(builder: (context) => PlayListScreen(id: id));
         }
         return MaterialPageRoute(builder: (context) => UnknownScreen());
