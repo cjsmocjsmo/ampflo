@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
           // backgroundColor: Colors.lightGreen.shade900,
           title: Text(
             "Ampflo",
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                    backgroundColor: Theme.of(context).colorScheme.card));
+                    backgroundColor: Theme.of(context).colorScheme.cardColor));
               },
             ),
             IconButton(
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     return Scaffold(
                       appBar: AppBar(
                           title: const Text('Songs'),
-                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          backgroundColor: Theme.of(context).colorScheme.primarySwatch,
                           // backgroundColor: Colors.lightGreen.shade900),
                       ),
                       body: const Center(
@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.accent,
+          color: Theme.of(context).colorScheme.accentColor,
           // color: Colors.lightGreenAccent.shade400,
         ),
         child: Column(
@@ -123,7 +123,7 @@ class PlayListsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
       ),
       body: Center(
         child: Column(
@@ -148,7 +148,7 @@ class SongsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
       ),
       body: Center(
         child: Column(
