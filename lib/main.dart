@@ -37,11 +37,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.backgroundColor
+        backgroundColor: Theme.of(context).colorScheme.background,
           // backgroundColor: Colors.lightGreen.shade900,
           title: Text(
             "Ampflo",
-            style: TextStyle(color: Colors.black87),
+            style: TextStyle(color: Colors.white),
           ),
           actions: <Widget>[
             IconButton(
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                    backgroundColor: Colors.blueGrey));
+                    backgroundColor: Theme.of(context).colorScheme.background));
               },
             ),
             IconButton(
@@ -62,7 +62,8 @@ class HomeScreen extends StatelessWidget {
                     return Scaffold(
                       appBar: AppBar(
                           title: const Text('Songs'),
-                          backgroundColor: Colors.lightGreen.shade900),
+                          backgroundColor: Theme.of(context).colorScheme.background,
+                          // backgroundColor: Colors.lightGreen.shade900),
                       body: const Center(
                         child: Text(
                           'This is songs page',
@@ -119,7 +120,9 @@ class PlayListsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +145,9 @@ class SongsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
