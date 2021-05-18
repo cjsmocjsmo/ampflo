@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
 
       }
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.lightGreen[900],
-        accentColor: Colors.cyan[600],
-        fontFamily: 'Georgia'
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.lightGreen[900],
+          secondarySwatch: Colors.cyan[500],
+          backgroundColor: Colors.lightGreen[400],
+          )
       ),
     );
   }
