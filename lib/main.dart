@@ -15,35 +15,36 @@ void main() {
   );
 }
 
-
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: FlatButton(
-          child: Text('go to playlists'),
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              '/Playlists',
-            );
-          },
+      body: Container(
+        Center(
+          child: FlatButton(
+            child: Text('go to playlists'),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/Playlists',
+              );
+            },
+          ),
+        ),
+        Center(
+          child: FlatButton(
+            child: Text('go to songs page'),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+              );
+            },
+          ),
         ),
       ),
-      Center(
-        child: FlatButton(
-          child: Text('go to songs page'),
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              '/Songs',
-            );
-          },
-        ),
-      ),
+      
     );
   }
 }
