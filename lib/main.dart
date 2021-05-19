@@ -97,10 +97,11 @@ class HomeScreen extends StatelessWidget {
                     ),  
                   ]
                 ),
-              )
-            ],
-            buttonSection,
-            listViewHome,
+              ),
+              buttonSection,
+              listViewHome,
+            ]
+            
           ),
       )
     );
@@ -141,7 +142,10 @@ Widget buttonSection = Container(
   ),
 );
 
-Widget listViewHome = ListView(padding: EdgeInsets.all(8), children: <Widget>[
+Widget listViewHome = ListView(
+  padding: EdgeInsets.all(8),
+  shrinkWrap: true,
+  children: <Widget>[
       // Image.asset('../images/one2.jpg', height: 75.0, width: 75.0),
       // Image.asset('../images/two2.jpg', height: 75.0, width: 75.0,),
   ListTile(
