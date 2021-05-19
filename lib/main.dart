@@ -160,9 +160,9 @@ Widget listViewHome = ListView(
         leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
         trailing: Text("13"),
         onTap: () {
-          Navigator.pushNamed(
-            context,
+          Navigator.of(context).pushNamed(
             '/Songs',
+            arguments: {}
           );
         }
       ),
@@ -175,9 +175,9 @@ Widget listViewHome = ListView(
         leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
         trailing: Text('5'),
         onTap: () {
-          Navigator.pushNamed(
-            context,
+          Navigator.of(context).pushNamed(
             '/Songs',
+            arguments: {}
           );
         }
       ),
