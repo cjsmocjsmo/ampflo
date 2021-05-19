@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 '/Songs'
-              )
+              );
             },
             icon: Icon(Icons.album_sharp)
           ),
@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 '/Playlists'
-              )
+              );
             },
             icon: Icon(Icons.add_rounded)
           ),
@@ -58,14 +58,14 @@ class HomeScreen extends StatelessWidget {
               ));
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: "Go to next page",
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/Songs',
-              );
+          // IconButton(
+          //   icon: const Icon(Icons.navigate_next),
+          //   tooltip: "Go to next page",
+          //   onPressed: () {
+          //     Navigator.pushNamed(
+          //       context,
+          //       '/Songs',
+          //     );
               // Navigator.push(context, MaterialPageRoute<void>(
               //     builder: (BuildContext context) {
               //       return Scaffold(
@@ -95,47 +95,50 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           buttonSection,
 
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                IconButton(onPressed: () {}, icon: Icon(Icons.album_sharp)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.add_rounded)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.queue_music_sharp)),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.lightGreen[900],
-                    elevation: 3,
-                    padding: EdgeInsets.all(20),
-                  ),
-                  child: Text('PLAYLISTS'),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Playlists',
-                    );
-                  },
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.lightGreen[900],
-                    elevation: 3,
-                    padding: EdgeInsets.all(20),
-                  ),
-                  child: Text('SONGS'),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Songs',
-                    );
-                  },
-                ),  
-              ]
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(20),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: <Widget>[
+          //       IconButton(onPressed: () {}, icon: Icon(Icons.album_sharp)),
+          //       IconButton(onPressed: () {}, icon: Icon(Icons.add_rounded)),
+          //       IconButton(onPressed: () {}, icon: Icon(Icons.queue_music_sharp)),
+          //       ElevatedButton(
+          //         style: ElevatedButton.styleFrom(
+          //           primary: Colors.lightGreen[900],
+          //           elevation: 3,
+          //           padding: EdgeInsets.all(20),
+          //         ),
+          //         child: Text('PLAYLISTS'),
+          //         onPressed: () {
+          //           Navigator.pushNamed(
+          //             context,
+          //             '/Playlists',
+          //           );
+          //         },
+          //       ),
+          //       ElevatedButton(
+          //         style: ElevatedButton.styleFrom(
+          //           primary: Colors.lightGreen[900],
+          //           elevation: 3,
+          //           padding: EdgeInsets.all(20),
+          //         ),
+          //         child: Text('SONGS'),
+          //         onPressed: () {
+          //           Navigator.pushNamed(
+          //             context,
+          //             '/Songs',
+          //           );
+          //         },
+          //       ),  
+          //     ]
+          //   ),
+          // ),
           Image.asset('images/two.jpg'),
           buttonSection,
+          Center(
+            child: Text("Currently Playing")
+          )
           // listViewHome,
           // listViewHomeZ,
 
