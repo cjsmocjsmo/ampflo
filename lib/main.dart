@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'playlists.dart';
+import 'songs.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,90 +22,94 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(),
-        appBar: AppBar(
-            backgroundColor: Colors.lightGreen.shade900,
-            title: Text(
-              "Ampflo",
-              style: TextStyle(color: Colors.white),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.add_alert),
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                      backgroundColor: Colors.purple));
-                },
-              ),
-              IconButton(
-                  icon: const Icon(Icons.navigate_next),
-                  tooltip: "Go to next page",
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute<void>(
-                        builder: (BuildContext context) {
-                      return Scaffold(
-                          appBar: AppBar(
-                            title: const Text('Songs'),
-                            backgroundColor: Colors.lightGreen.shade900,
-                          ),
-                          body: const Center(
-                            child: Text(
-                              'This is songs page',
-                              style: TextStyle(fontSize: 24),
-                            ),
-                          ));
-                    }));
-                  })
-            ]),
-        body: Container(
-            decoration: BoxDecoration(
-              color: Colors.lightGreenAccent.shade400,
-            ),
-            child: Column(children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.lightGreen[900],
-                        elevation: 3,
-                        padding: EdgeInsets.all(20),
-                      ),
-                      child: Text('go to playlists'),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/Playlists',
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.lightGreen[900],
-                        elevation: 3,
-                        padding: EdgeInsets.all(20),
-                      ),
-                      child: Text('go to songs page'),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/Songs',
-                        );
-                      },
-                    ),  
-                  ]
-                ),
-              ),
-              buttonSection,
-              listViewHome,
-            ]
-            
+      appBar: AppBar(
+        backgroundColor: Colors.lightGreen.shade900,
+        title: Text(
+          "Ampflo",
+          style: TextStyle(color: Colors.white),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
+                backgroundColor: Colors.purple,
+              ));
+            },
           ),
-      )
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: "Go to next page",
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute<void>(
+                  builder: (BuildContext context) {
+                    return Scaffold(
+                      appBar: AppBar(
+                        title: const Text('Songs'),
+                        backgroundColor: Colors.lightGreen.shade900,
+                      ),
+                      body: const Center(
+                        child: Text(
+                          'This is songs page',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                      )
+                    );
+                  }
+                )
+              );
+            }
+          )
+        ]
+      ),
+      body: Container(
+      decoration: BoxDecoration(
+        color: Colors.lightGreenAccent.shade400,
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.lightGreen[900],
+                    elevation: 3,
+                    padding: EdgeInsets.all(20),
+                  ),
+                  child: Text('go to playlists'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Playlists',
+                    );
+                  },
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.lightGreen[900],
+                    elevation: 3,
+                    padding: EdgeInsets.all(20),
+                  ),
+                  child: Text('go to songs page'),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Songs',
+                    );
+                  },
+                ),  
+              ]
+            ),
+          ),
+          buttonSection,
+          listViewHome, 
+        ]
+      ),
     );
   }
 }
@@ -146,95 +152,23 @@ Widget listViewHome = ListView(
   padding: EdgeInsets.all(8),
   shrinkWrap: true,
   children: <Widget>[
-      // Image.asset('../images/one2.jpg', height: 75.0, width: 75.0),
-      // Image.asset('../images/two2.jpg', height: 75.0, width: 75.0,),
-  ListTile(
-    title: Text("Mexican Black Bird"),
-    subtitle: Text('Fandango'),
-    leading: CircleAvatar(backgroundImage: AssetImage('images/one2.jpg')),
-    trailing: Icon(Icons.arrow_forward),
-  ),
-  ListTile(
-    title: Text("Another Song"),
-    subtitle: Text('ZZ Top'),
-    leading: CircleAvatar(backgroundImage: AssetImage('images/two2.jpg')),
+    ListTile(
+      title: Text("Mexican Black Bird"),
+      subtitle: Text('Fandango'),
+      leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      trailing: Text("13"),
+    ),
+    ListTile(
+      title: Text("Another Song"),
+      subtitle: Text('ZZ Top'),
+      leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      trailing: Text('5'),
+    ),
+  ]
+);
 
-  ),
-]));
 
-class PlayListsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen[900],
-        ),
-        body: Container(
-          decoration: BoxDecoration(
-            color: Colors.lightGreenAccent.shade400,
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Viewing playlist page'),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.lightGreen),
-                  ),
-                  child: Text('Pop!'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        ));
-  }
-}
 
-class SongsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen[900],
-        ),
-        body: Container(
-          decoration: BoxDecoration(
-            color: Colors.lightGreenAccent.shade400,
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Viewing songs page'),
-                ElevatedButton(
-                  child: Text('Pop!'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        ));
-  }
-}
-
-// class UnknownScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: Center(
-//         child: Text('404!'),
-//       ),
-//     );
-//   }
-// }
 
 // class MyApp extends StatelessWidget {
 //   // This widget is the root of your application.
