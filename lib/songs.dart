@@ -11,20 +11,43 @@ class SongsScreen extends StatelessWidget {
           color: Colors.lightGreenAccent.shade400,
         ),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Viewing songs page'),
-              ElevatedButton(
-                child: Text('Pop!'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
+          child:listViewHomeZ,
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Text('Viewing songs page'),
+          //     ElevatedButton(
+          //       child: Text('Pop!'),
+          //       onPressed: () {
+          //         Navigator.pop(context);
+          //       },
+          //     ),
+          //   ],
+          // ),
         ),
       )
     );
   }
 }
+
+Widget listViewHomeZ = ListView.builder(
+  itemCount: 6,
+  itemBuilder: (BuildContext context, int index) {
+    return Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        );
+  }
+);
