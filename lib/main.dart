@@ -63,6 +63,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Column(children: <Widget>[
               Row(
+            
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
@@ -93,11 +94,49 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     ),
-                  ])
-            ])));
+                  ]
+                )
+            ],
+            buttonSection,
+          )
+      )
+    );
   }
 }
 
+Column _buildButtonColumn(IconData icon, String label) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(icon, color: Colors.blue[900]),
+      Container(
+        margin: const EdgeInsets.only(top: 8),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.blue[900],
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget buttonSection = Container(
+  padding: EdgeInsets.all(20),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      _buildButtonColumn(Icons.skip_previous_sharp, "PREVIOUS"),
+      _buildButtonColumn(Icons.play_arrow_sharp, 'PLAY'),
+      _buildButtonColumn(Icons.stop_sharp, 'STOP'),
+      _buildButtonColumn(Icons.skip_next_sharp, 'NEXT'),
+    ],
+  ),
+);
 class PlayListsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
