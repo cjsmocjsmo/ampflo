@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
           listViewHome, 
         ]
       ),
-    );
+    ));
   }
 }
 
@@ -159,6 +159,12 @@ Widget listViewHome = ListView(
         subtitle: Text('Fandango'),
         leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
         trailing: Text("13"),
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/Songs',
+          );
+        }
       ),
     ),
     Card(
@@ -168,6 +174,12 @@ Widget listViewHome = ListView(
         subtitle: Text('ZZ Top'),
         leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
         trailing: Text('5'),
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/Songs',
+          );
+        }
       ),
     ),
   ]
