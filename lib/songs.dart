@@ -4,7 +4,9 @@ class SongsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.lightGreen[900],
+      appBar: AppBar(
+        title: Text('Songs'),
+        backgroundColor: Colors.lightGreen[900],
       ),
       body: Container(
         decoration: BoxDecoration(

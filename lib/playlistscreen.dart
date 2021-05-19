@@ -5,6 +5,7 @@ class PlayListsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Playlists"),
         backgroundColor: Colors.lightGreen[900],
       ),
       body: Container(
