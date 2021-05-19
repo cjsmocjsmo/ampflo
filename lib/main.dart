@@ -107,108 +107,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           buttonSection,
-          ListView(
-              padding: EdgeInsets.all(8),
-              shrinkWrap: true,
-              children: <Widget>[
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Mexican Black Bird"),
-                    subtitle: Text('Fandango'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text("13"),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Mexican Black Bird"),
-                    subtitle: Text('Fandango'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text("13"),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Mexican Black Bird"),
-                    subtitle: Text('Fandango'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text("13"),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Mexican Black Bird"),
-                    subtitle: Text('Fandango'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text("13"),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Mexican Black Bird"),
-                    subtitle: Text('Fandango'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text("13"),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-                Card(
-                  color: Colors.amber[400],
-                  child: ListTile(
-                    title: Text("Another Song"),
-                    subtitle: Text('ZZ Top'),
-                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-                    trailing: Text('5'),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Songs',
-                        arguments: {}
-                      );
-                    }
-                  ),
-                ),
-              ]
-            )
+          
 
         ]
       ),
@@ -252,6 +151,115 @@ Widget buttonSection = Container(
   ),
 );
 
+Widget listViewHome = ListView(
+  padding: EdgeInsets.all(8),
+  shrinkWrap: true,
+  children: <Widget>[
+    SizedBox(
+      height: 300
+      child: Column(
+        children: <Widget>[
+          Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+        Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+        Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+        Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+        Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+        Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Another Song"),
+            subtitle: Text('ZZ Top'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text('5'),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+      )
+    )
+  ]
+  ]
+)
 // Widget listViewHome = ListView(
 //   padding: EdgeInsets.all(8),
 //   shrinkWrap: true,
