@@ -69,6 +69,7 @@ class HomeScreen extends StatelessWidget {
         color: Colors.lightGreenAccent.shade400,
       ),
       child: Column(
+        buttonSection,
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(20),
@@ -81,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                     elevation: 3,
                     padding: EdgeInsets.all(20),
                   ),
-                  child: Text('go to playlists'),
+                  child: Text('PLAYLISTS'),
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
@@ -95,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                     elevation: 3,
                     padding: EdgeInsets.all(20),
                   ),
-                  child: Text('go to songs page'),
+                  child: Text('SONGS'),
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
@@ -106,6 +107,7 @@ class HomeScreen extends StatelessWidget {
               ]
             ),
           ),
+          Image.asset('images/two2.jpg')
           buttonSection,
           // listViewHome,
           // listViewHomeZ,
