@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,140 +8,128 @@ class MyApp extends StatelessWidget {
   static const String _title = "Ampflo";
 
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/Playlists': (context) => PlayListsScreen(),
-        '/Songs': (context) => SongsScreen(),
-
-      }
-
-    );
+    return MaterialApp(title: _title, initialRoute: '/', routes: {
+      '/': (context) => HomeScreen(),
+      '/Playlists': (context) => PlayListsScreen(),
+      '/Songs': (context) => SongsScreen(),
+    });
   }
 }
-
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
-      appBar: AppBar(
-          backgroundColor: Colors.lightGreen.shade900,
-          title: Text(
-            "Ampflo",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.add_alert),
-              tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                    backgroundColor: Colors.purple));
-              },
+        // appBar: AppBar(),
+        appBar: AppBar(
+            backgroundColor: Colors.lightGreen.shade900,
+            title: Text(
+              "Ampflo",
+              style: TextStyle(color: Colors.white),
             ),
-            IconButton(
-                icon: const Icon(Icons.navigate_next),
-                tooltip: "Go to next page",
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.add_alert),
+                tooltip: 'Show Snackbar',
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute<void>(builder: (BuildContext context) {
-                    return Scaffold(
-                      appBar: AppBar(
-                          title: const Text('Songs'),
-                          backgroundColor: Colors.lightGreen.shade900,
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
+                      backgroundColor: Colors.purple));
+                },
+              ),
+              IconButton(
+                  icon: const Icon(Icons.navigate_next),
+                  tooltip: "Go to next page",
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute<void>(
+                        builder: (BuildContext context) {
+                      return Scaffold(
+                          appBar: AppBar(
+                            title: const Text('Songs'),
+                            backgroundColor: Colors.lightGreen.shade900,
+                          ),
+                          body: const Center(
+                            child: Text(
+                              'This is songs page',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                          ));
+                    }));
+                  })
+            ]),
+        body: Container(
+            decoration: BoxDecoration(
+              color: Colors.lightGreenAccent.shade400,
+            ),
+            child: Column(children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.lightGreen[900],
+                        elevation: 3,
+                        
+                      ) ,
+
+
+
+                      child: Text('go to playlists'),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/Playlists',
+                        );
+                      },
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.lightGreen),
                       ),
-                      body: const Center(
-                        child: Text(
-                          'This is songs page',
-                          style: TextStyle(fontSize: 24),
-                        ),
-                      )
-                    );
-                  }
-                )
-              );
-            }
-          )
-        ]
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.lightGreenAccent.shade400,
-        ),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
-                  )
-                  child: Text('go to playlists'),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Playlists',
-                    );
-                  },
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
-                  )
-                  child: Text('go to songs page'),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Songs',
-                    );
-                  },
-                ),
-              ]
-            )
-          ]
-        )
-      )
-    );
+                      child: Text('go to songs page'),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/Songs',
+                        );
+                      },
+                    ),
+                  ])
+            ])));
   }
 }
-
-
 
 class PlayListsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.lightGreenAccent.shade400,
+        appBar: AppBar(
+          backgroundColor: Colors.lightGreen[900],
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Viewing playlist page'),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
-                )
-                child: Text('Pop!'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.lightGreenAccent.shade400,
           ),
-      ),
-    );
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Viewing playlist page'),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.lightGreen),
+                  ),
+                  child: Text('Pop!'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
 
@@ -148,30 +137,31 @@ class SongsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen[900],
-      ),
-      body: CContainer(
-        decoration: BoxDecoration(
-          color: Colors.lightGreenAccent.shade400,
+        appBar: AppBar(
+          backgroundColor: Colors.lightGreen[900],
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Viewing songs page'),
-              ElevatedButton(
-                child: Text('Pop!'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.lightGreenAccent.shade400,
           ),
-      ),
-    );
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Viewing songs page'),
+                ElevatedButton(
+                  child: Text('Pop!'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
+
 // class UnknownScreen extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
