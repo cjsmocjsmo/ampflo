@@ -95,13 +95,13 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     ),  
-                ]
-              ),
-              buttonSection,
+                  ]
+                ),
+              )
             ],
-            
+            buttonSection,
+            listViewHome,
           ),
-          
       )
     );
   }
@@ -140,6 +140,24 @@ Widget buttonSection = Container(
     ],
   ),
 );
+
+Widget listViewHome = ListView(padding: EdgeInsets.all(8), children: <Widget>[
+      // Image.asset('../images/one2.jpg', height: 75.0, width: 75.0),
+      // Image.asset('../images/two2.jpg', height: 75.0, width: 75.0,),
+  ListTile(
+    title: Text("Mexican Black Bird"),
+    subtitle: Text('Fandango'),
+    leading: CircleAvatar(backgroundImage: AssetImage('images/one2.jpg')),
+    trailing: Icon(Icons.arrow_forward),
+  ),
+  ListTile(
+    title: Text("Another Song"),
+    subtitle: Text('ZZ Top'),
+    leading: CircleAvatar(backgroundImage: AssetImage('images/two2.jpg')),
+
+  ),
+]));
+
 class PlayListsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
