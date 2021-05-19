@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
               children: <Widget> [
                 ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: Colors.lightGreen[900],
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
                   )
                   child: Text('go to playlists'),
                   onPressed: () {
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: Colors.lightGreen[900],
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
                   )
                   child: Text('go to songs page'),
                   onPressed: () {
@@ -129,6 +129,9 @@ class PlayListsScreen extends StatelessWidget {
             children: [
               Text('Viewing playlist page'),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen[900]),
+                )
                 child: Text('Pop!'),
                 onPressed: () {
                   Navigator.pop(context);
