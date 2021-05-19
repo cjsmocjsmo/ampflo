@@ -30,6 +30,25 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs'
+              )
+            },
+            icon: Icon(Icons.album_sharp)
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/Playlists'
+              )
+            },
+            icon: Icon(Icons.add_rounded)
+          ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.queue_music_sharp)),
+          IconButton(
             icon: const Icon(Icons.add_alert),
             tooltip: 'Show Snackbar',
             onPressed: () {
@@ -43,23 +62,27 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.navigate_next),
             tooltip: "Go to next page",
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute<void>(
-                  builder: (BuildContext context) {
-                    return Scaffold(
-                      appBar: AppBar(
-                        title: const Text('Songs'),
-                        backgroundColor: Colors.lightGreen.shade900,
-                      ),
-                      body: const Center(
-                        child: Text(
-                          'This is songs page',
-                          style: TextStyle(fontSize: 24),
-                        ),
-                      )
-                    );
-                  }
-                )
+              Navigator.pushNamed(
+                context,
+                '/Songs',
               );
+              // Navigator.push(context, MaterialPageRoute<void>(
+              //     builder: (BuildContext context) {
+              //       return Scaffold(
+              //         appBar: AppBar(
+              //           title: const Text('Songs'),
+              //           backgroundColor: Colors.lightGreen.shade900,
+              //         ),
+              //         body: const Center(
+              //           child: Text(
+              //             'This is songs page',
+              //             style: TextStyle(fontSize: 24),
+              //           ),
+              //         )
+              //       );
+              //     }
+              //   )
+              // );
             }
           )
         ]
@@ -69,13 +92,17 @@ class HomeScreen extends StatelessWidget {
         color: Colors.lightGreenAccent.shade400,
       ),
       child: Column(
-        buttonSection,
         children: <Widget>[
+          buttonSection,
+
           Container(
             padding: EdgeInsets.all(20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                IconButton(onPressed: () {}, icon: Icon(Icons.album_sharp)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.add_rounded)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.queue_music_sharp)),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.lightGreen[900],
@@ -107,7 +134,7 @@ class HomeScreen extends StatelessWidget {
               ]
             ),
           ),
-          Image.asset('images/two2.jpg')
+          Image.asset('images/two.jpg'),
           buttonSection,
           // listViewHome,
           // listViewHomeZ,
