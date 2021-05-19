@@ -41,14 +41,14 @@ Widget listViewHomeZ = ListView.builder(
             leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
             trailing: Text("13"),
             onTap: () {
-              // Navigator.pop(context);
+              Navigator.pop(context);
 
 
-              Navigator.pushNamed(
-                context,
-                '/Playlists',
-                arguments: {}
-              );
+              // Navigator.pushNamed(
+              //   context,
+              //   '/Playlists',
+              //   arguments: {}
+              // );
             }
           ),
         );
