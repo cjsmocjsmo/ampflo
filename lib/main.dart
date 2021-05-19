@@ -52,14 +52,14 @@ class HomeScreen extends StatelessWidget {
                     return Scaffold(
                       appBar: AppBar(
                           title: const Text('Songs'),
-                          backgroundColor: Colors.lightGreen.shade900),
+                          backgroundColor: Colors.lightGreen.shade900,
                       ),
                       body: const Center(
                         child: Text(
                           'This is songs page',
                           style: TextStyle(fontSize: 24),
                         ),
-                      ),
+                      )
                     );
                   }
                 )
@@ -70,8 +70,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.lightGreen[400],
-          // color: Colors.lightGreenAccent.shade400,
+          color: Colors.lightGreenAccent.shade400,
         ),
         child: Column(
           children: <Widget>[
@@ -79,6 +78,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget> [
                 ElevatedButton(
+                  backgroundColor: Colors.cyan,
                   child: Text('go to playlists'),
                   onPressed: () {
                     Navigator.pushNamed(
@@ -88,6 +88,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 ElevatedButton(
+                  backgroundColor: Colors.cyan,
                   child: Text('go to songs page'),
                   onPressed: () {
                     Navigator.pushNamed(
@@ -114,19 +115,23 @@ class PlayListsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.lightGreen[900],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Viewing playlist page'),
-            ElevatedButton(
-              child: Text('Pop!'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.lightGreenAccent.shade400,
         ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Viewing playlist page'),
+              ElevatedButton(
+                child: Text('Pop!'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
       ),
     );
   }
@@ -139,19 +144,23 @@ class SongsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.lightGreen[900],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Viewing songs page'),
-            ElevatedButton(
-              child: Text('Pop!'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+      body: CContainer(
+        decoration: BoxDecoration(
+          color: Colors.lightGreenAccent.shade400,
         ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Viewing songs page'),
+              ElevatedButton(
+                child: Text('Pop!'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
       ),
     );
   }
