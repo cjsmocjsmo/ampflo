@@ -15,15 +15,8 @@ class MyApp extends StatelessWidget {
         '/Playlists': (context) => PlayListsScreen(),
         '/Songs': (context) => SongsScreen(),
 
-      },
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.lightGreen,
-        accentColor: Colors.cyan[500],
-        // cardColor: Colors.amber[300],
-        //   errorColor: Colors.red,
-        backgroundColor: Colors.lightGreen[400],
-        )
-      ),
+      }
+
     );
   }
 }
@@ -35,8 +28,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // appBar: AppBar(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
-          // backgroundColor: Colors.lightGreen.shade900,
+          backgroundColor: Colors.lightGreen.shade900,
           title: Text(
             "Ampflo",
             style: TextStyle(color: Colors.white),
@@ -48,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                    backgroundColor: Theme.of(context).colorScheme.cardColor));
+                    backgroundColor: Colors.purple));
               },
             ),
             IconButton(
@@ -60,8 +52,7 @@ class HomeScreen extends StatelessWidget {
                     return Scaffold(
                       appBar: AppBar(
                           title: const Text('Songs'),
-                          backgroundColor: Theme.of(context).colorScheme.primarySwatch,
-                          // backgroundColor: Colors.lightGreen.shade900),
+                          backgroundColor: Colors.lightGreen.shade900),
                       ),
                       body: const Center(
                         child: Text(
@@ -79,7 +70,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.accentColor,
+          color: Colors.lightGreen[400],
           // color: Colors.lightGreenAccent.shade400,
         ),
         child: Column(
@@ -121,7 +112,7 @@ class PlayListsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
+        backgroundColor: Colors.lightGreen[900],
       ),
       body: Center(
         child: Column(
@@ -146,7 +137,7 @@ class SongsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.backgroundColor,
+        backgroundColor: Colors.lightGreen[900],
       ),
       body: Center(
         child: Column(
