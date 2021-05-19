@@ -62,8 +62,9 @@ class HomeScreen extends StatelessWidget {
               color: Colors.lightGreenAccent.shade400,
             ),
             child: Column(children: <Widget>[
-              Row(
-            
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
@@ -93,13 +94,14 @@ class HomeScreen extends StatelessWidget {
                           '/Songs',
                         );
                       },
-                    ),
-                  ]
-                )
+                    ),  
+                ]
+              ),
+              buttonSection,
             ],
             
           ),
-          buttonSection,
+          
       )
     );
   }
