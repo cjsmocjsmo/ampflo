@@ -261,6 +261,8 @@ Widget listViewHome = ListView(
 
   ]
 )
+
+//this is fucked up
 // Widget listViewHome = ListView( yes
 //   padding: EdgeInsets.all(8),
 //   shrinkWrap: true,
