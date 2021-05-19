@@ -78,7 +78,9 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget> [
                 ElevatedButton(
-                  backgroundColor: Colors.cyan,
+                  style: ButtonStyle(
+                    backgroundColor: Colors.lightGreen[900],
+                  )
                   child: Text('go to playlists'),
                   onPressed: () {
                     Navigator.pushNamed(
@@ -88,7 +90,9 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 ElevatedButton(
-                  backgroundColor: Colors.cyan,
+                  style: ButtonStyle(
+                    backgroundColor: Colors.lightGreen[900],
+                  )
                   child: Text('go to songs page'),
                   onPressed: () {
                     Navigator.pushNamed(
