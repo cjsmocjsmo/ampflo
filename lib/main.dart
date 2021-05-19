@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'playlists.dart';
+import 'playlistscreen.dart';
 import 'songs.dart';
 
 void main() => runApp(MyApp());
