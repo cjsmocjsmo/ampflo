@@ -130,6 +130,70 @@ class HomeScreen extends StatelessWidget {
                 Card(
                   color: Colors.amber[400],
                   child: ListTile(
+                    title: Text("Mexican Black Bird"),
+                    subtitle: Text('Fandango'),
+                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+                    trailing: Text("13"),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Songs',
+                        arguments: {}
+                      );
+                    }
+                  ),
+                ),
+                Card(
+                  color: Colors.amber[400],
+                  child: ListTile(
+                    title: Text("Mexican Black Bird"),
+                    subtitle: Text('Fandango'),
+                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+                    trailing: Text("13"),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Songs',
+                        arguments: {}
+                      );
+                    }
+                  ),
+                ),
+                Card(
+                  color: Colors.amber[400],
+                  child: ListTile(
+                    title: Text("Mexican Black Bird"),
+                    subtitle: Text('Fandango'),
+                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+                    trailing: Text("13"),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Songs',
+                        arguments: {}
+                      );
+                    }
+                  ),
+                ),
+                Card(
+                  color: Colors.amber[400],
+                  child: ListTile(
+                    title: Text("Mexican Black Bird"),
+                    subtitle: Text('Fandango'),
+                    leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+                    trailing: Text("13"),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Songs',
+                        arguments: {}
+                      );
+                    }
+                  ),
+                ),
+                Card(
+                  color: Colors.amber[400],
+                  child: ListTile(
                     title: Text("Another Song"),
                     subtitle: Text('ZZ Top'),
                     leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
@@ -144,7 +208,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ]
-            );
+            )
 
         ]
       ),
