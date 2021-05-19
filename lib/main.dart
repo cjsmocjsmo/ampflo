@@ -107,7 +107,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           buttonSection,
-          
+          // listViewHome,
+          listViewHomeZ,
 
         ]
       ),
@@ -151,7 +152,36 @@ Widget buttonSection = Container(
   ),
 );
 
-Widget listViewHome = ListView(
+Widget listViewHomeZ = ListView.builder(
+  itemCount: 6,
+  itemBuilder: (BuildContext context, int index) {
+    return Card(
+          color: Colors.amber[400],
+          child: ListTile(
+            title: Text("Mexican Black Bird"),
+            subtitle: Text('Fandango'),
+            leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+            trailing: Text("13"),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+            }
+          ),
+        ),
+  }
+)
+
+
+
+
+
+
+
+
+Widget listViewHome = new ListView(
   padding: EdgeInsets.all(8),
   shrinkWrap: true,
   children: <Widget>[
@@ -183,6 +213,9 @@ Widget listViewHome = ListView(
             leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
             trailing: Text("13"),
             onTap: () {
+              // Navigator.push(context, MaterialPageRoute<void>(
+              //     builder: (BuildContext context) {
+              //       return 
               Navigator.pushNamed(
                 context,
                 '/Songs',
