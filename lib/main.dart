@@ -45,8 +45,8 @@ class IntroScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(25.0),
                 alignment: Alignment.center,
                 child: SizedBox(
-                  height: 50.0,
-                  width: 110.0,
+                  height: 40.0,
+                  width: 90.0,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade900),
