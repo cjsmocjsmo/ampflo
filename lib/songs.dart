@@ -12,10 +12,10 @@ class SongsScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.lightGreenAccent.shade400,
         ),
-        child: Center(
+        // child: Center(
           // child:listViewHomeZ,
-          testGridView,
-        ),
+        child: testGridView,
+        // ),
       )
     );
   }
@@ -37,13 +37,13 @@ Widget testGridView = GridView.builder(
             onTap: () {
               Navigator.pushNamed(
                 context,
-                '/Songs',
+                '/Playlists',
                 arguments: {}
               );
               child: Image.asset(
-                'images/two2.jpg', 
+                'images/two.jpg', 
                 height: 250.0, 
-                width: 200.0,
+                width: 250.0,
               ),
             }
           ) 
