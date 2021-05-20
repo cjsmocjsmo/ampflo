@@ -35,49 +35,45 @@ class IntroScreen extends StatelessWidget {
           color: Colors.lightGreenAccent.shade400,
         ),
         child: Column(
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(25.0),
-                alignment: Alignment.center,
-                child: Image.asset('images/two.jpg'),
-              ),
-              Container(
-                padding: const EdgeInsets.all(25.0),
-                alignment: Alignment.center,
-                child: SizedBox(
-                  height: 40.0,
-                  width: 90.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade900),
-                      
-                    ),
-                    child: Text(
-                      'Enter',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
-                      )
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/Home'
-                      );
-                    },
+          children: <Widget>
+          [
+            Container(
+              padding: const EdgeInsets.all(25.0),
+              alignment: Alignment.center,
+              child: Image.asset('images/two.jpg'),
+            ),
+            Container(
+              padding: const EdgeInsets.all(25.0),
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                  style: ButtonStyle.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.lightGreen.shade900,
+                    side: BorderSide(color: Colors.black, width: 2),
+                    elevation: 20,
+                    minimumSize: Size(150, 50)
+                    // backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade900),
+
                   ),
-                
-
-                )
-
-              
-
-              
-            ]
-      
+                  child: Text(
+                    'Enter',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    )
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Home'
+                    );
+                  },
+                ),
+            )
+          ]
+        )
       )
-    )
-  );
+    );
   }
 }
 
