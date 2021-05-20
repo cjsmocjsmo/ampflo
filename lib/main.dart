@@ -11,12 +11,51 @@ class MyApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(title: _title, initialRoute: '/', routes: {
-      '/': (context) => HomeScreen(),
+      '/': (context) => IntroScreen(),
+      '/Home': (context) => HomeScreen(),
       '/Playlists': (context) => PlayListsScreen(),
       '/Songs': (context) => SongsScreen(),
     });
   }
 }
+
+class IntroScreen extends StatelessWidget {
+  @override 
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Ampflo",
+          style: TextStyle(color: Colors.white),
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.lightGreenAccent.shade400,
+          ),
+          child: Column(
+            children: <Widget>[
+
+              Image.asset('images/two.jpg'),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                ),
+                child: Text('Pop!'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              
+            ]
+          )
+        )
+      )
+    )
+  }
+}
+
+
+
 
 class HomeScreen extends StatelessWidget {
   @override
