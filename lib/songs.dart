@@ -13,12 +13,92 @@ class SongsScreen extends StatelessWidget {
           color: Colors.lightGreenAccent.shade400,
         ),
         child: Center(
-          child:listViewHomeZ,
+          // child:listViewHomeZ,
+          testGridView,
         ),
       )
     );
   }
 }
+
+
+Widget testGridView = GridView.count(
+  primary: false,
+  padding: const EdgeInsets.all(20),
+  crossAxisSpacing: 10,
+  mainAxisSpacing: 10,
+  crossAxisCount: 2,
+  children: <Widget>[
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+    Container(
+      padding: const EdgeInsets.all(8),
+      Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+      // child: const Text("He'd have you all unravel at the"),
+      // color: Colors.teal[100],
+    ),
+  ]
+)
+
+
 
 Widget listViewHomeZ = ListView.builder(
   itemCount: 18,
