@@ -40,35 +40,41 @@ class IntroScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(25.0),
                 alignment: Alignment.center,
                 child: Image.asset('images/two.jpg'),
-              );
+              ),
               Container(
                 padding: const EdgeInsets.all(25.0),
                 alignment: Alignment.center,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    // backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
-                    backgroundColor: Colors.lightGreen[900]
+                child: SizedBox(
+                  height: 50.0,
+                  width: 110.0,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade900),
+                      
+                    ),
+                    child: Text(
+                      'Enter',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
+                      )
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Home'
+                      );
+                    },
                   ),
-                  child: Text(
-                    'Enter',
-                    style: TextStyle(
-                      color: Colors.black,
-                    )
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Home'
-                    );
-                  },
-                ),
-              );
+                
+
+                )
 
               
 
               
             ]
-        )
+      
       )
     )
   );
