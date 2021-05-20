@@ -128,42 +128,52 @@ class HomeScreen extends StatelessWidget {
           Center(
             child: Column(
               children: <Widget>[
-                Text(
-                  "Currently Playing",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "Currently Playing",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                Text(
-                  "ZZ Top",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "ZZ Top",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                Text(
-                  "Fandango",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "Fandango",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                Text(
-                  "Mexican Black Bird",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "Mexican Black Bird",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                )
               ]
-              
             ) 
-            
           ),
         ]
       ),
