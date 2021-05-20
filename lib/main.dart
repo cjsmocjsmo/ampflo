@@ -93,7 +93,8 @@ class HomeScreen extends StatelessWidget {
                 '/Songs'
               );
             },
-            icon: Icon(Icons.album_sharp)
+            icon: Icon(Icons.album_sharp),
+            tooltip: "Go to Songs Page"
           ),
           IconButton(
             onPressed: () {
@@ -102,9 +103,19 @@ class HomeScreen extends StatelessWidget {
                 '/Playlists'
               );
             },
-            icon: Icon(Icons.add_rounded)
+            icon: Icon(Icons.add_rounded),
+            tooltip: "Go To Playlist Page"
           ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.queue_music_sharp)),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/'
+              );
+            },
+            icon: Icon(Icons.exit_to_app_sharp),
+            tooltip: "Exit App"
+          ),
           IconButton(
             icon: const Icon(Icons.add_alert),
             tooltip: 'Show Snackbar',
