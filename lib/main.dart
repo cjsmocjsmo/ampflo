@@ -34,30 +34,39 @@ class IntroScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.lightGreenAccent.shade400,
         ),
-        child: Container(
-          padding: const EdgeInsets.all(25.0),
-          alignment: Alignment.center,
-          child: Column(
+        child: Column(
             children: <Widget>[
-              Image.asset('images/two.jpg'),
-              ElevatedButton(
-                style: ButtonStyle(
-                  // backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
-                  backgroundColor: Colors.lightGreen[900]
+              Container(
+                padding: const EdgeInsets.all(25.0),
+                alignment: Alignment.center,
+                child: Image.asset('images/two.jpg'),
+              );
+              Container(
+                padding: const EdgeInsets.all(25.0),
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    // backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                    backgroundColor: Colors.lightGreen[900]
+                  ),
+                  child: Text(
+                    'Enter',
+                    style: TextStyle(
+                      color: Colors.black,
+                    )
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Home'
+                    );
+                  },
                 ),
-                child: Text(
-                  'Enter',
-                  style: TextStyle(
-                    color: Colors.black,
-                  )
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/Home'
-                  );
-                },
-              ),
+              );
+
+              
+
+              
             ]
         )
       )
