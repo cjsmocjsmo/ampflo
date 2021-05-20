@@ -21,7 +21,7 @@ class SongsScreen extends StatelessWidget {
 }
 
 Widget listViewHomeZ = ListView.builder(
-  itemCount: 6,
+  itemCount: 18,
   itemBuilder: (BuildContext context, int index) {
     return Card(
       color: Colors.amber[400],

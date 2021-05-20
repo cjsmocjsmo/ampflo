@@ -46,14 +46,12 @@ class IntroScreen extends StatelessWidget {
               padding: const EdgeInsets.all(25.0),
               alignment: Alignment.center,
               child: ElevatedButton(
-                  style: ButtonStyle.styleFrom(
+                  style: ElevatedButton.styleFrom(
                     onPrimary: Colors.white,
                     primary: Colors.lightGreen.shade900,
                     side: BorderSide(color: Colors.black, width: 2),
                     elevation: 20,
                     minimumSize: Size(150, 50)
-                    // backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade900),
-
                   ),
                   child: Text(
                     'Enter',
@@ -76,9 +74,6 @@ class IntroScreen extends StatelessWidget {
     );
   }
 }
-
-
-
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -131,17 +126,51 @@ class HomeScreen extends StatelessWidget {
           buttonSection,
           Image.asset('images/two.jpg'),
           Center(
-            child: Text("Currently Playing")
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Currently Playing",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "ZZ Top",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "Fandango",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "Mexican Black Bird",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+              ]
+              
+            ) 
+            
           ),
-          buttonSection,
         ]
       ),
     ));
   }
 }
 
-
-// yes
 Column _buildButtonColumn(IconData icon, String label) {
   return Column(
     mainAxisSize: MainAxisSize.min,
