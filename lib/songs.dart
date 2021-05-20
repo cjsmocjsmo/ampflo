@@ -22,14 +22,16 @@ class SongsScreen extends StatelessWidget {
 }
 
 
-Widget testGridView = GridView.count(
-  primary: false,
-  padding: const EdgeInsets.all(20),
-  crossAxisSpacing: 10,
-  mainAxisSpacing: 10,
-  crossAxisCount: 2,
-  children: <Widget>[
-    GestureDetector(
+Widget testGridView = GridView.builder(
+  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+    maxCrossAxisExtent: 200,
+    childAspectRatio: 3/2,
+    crossAxisSpacing: 20,
+    mainAxisSpacing: 20,
+  ),
+  itemCount: 25,
+  itemBuilder: (BuildContext context) {
+    return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
           context,
@@ -44,94 +46,7 @@ Widget testGridView = GridView.count(
         ),
       },
     ),
-    GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/Songs',
-          arguments: {}
-        );
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-          // child: const Text("He'd have you all unravel at the"),
-          // color: Colors.teal[100],
-        ),
-      },
-    ),
-    Container(
-      child: padding: const EdgeInsets.all(8),
-      Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/Songs',
-          arguments: {}
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-      // child: const Text("He'd have you all unravel at the"),
-      // color: Colors.teal[100],
-    ),
-    GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/Songs',
-          arguments: {}
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-        // child: const Text("He'd have you all unravel at the"),
-        // color: Colors.teal[100],
-      ),
-    )
-    
-  ]
+  }
 )
 
 
