@@ -85,18 +85,17 @@ Widget testGridView = GridView.builder(
                 '/Playlists',
                 arguments: {}
               );
+            },
               child: Image.asset(
                 'images/two.jpg', 
                 height: 250.0, 
                 width: 250.0,
-              ),
-            }
-          ) 
-        ),
-      },
-    ),
+              )
+            )
+          ); 
+      
   }
-)
+);
 
 
 
