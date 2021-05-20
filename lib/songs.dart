@@ -25,20 +25,23 @@ Widget listViewHomeZ = ListView.builder(
   itemBuilder: (BuildContext context, int index) {
     return Card(
       color: Colors.amber[400],
-      child: ListTile(
-        title: Text("Mexican Black Bird"),
-        subtitle: Text('Fandango'),
-        leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
-        trailing: Text("13"),
-        onTap: () {
-          Navigator.pop(context);
-          // Navigator.pushNamed(
-          //   context,
-          //   '/Playlists',
-          //   arguments: {}
-          // );
-        }
-      ),
+      child: InkWell(
+        splashColor: Colors.blue.withAlpha(30),
+        child: ListTile(
+          title: Text("Mexican Black Bird"),
+          subtitle: Text('Fandango'),
+          leading: Image.asset('images/two2.jpg', height: 150.0, width: 150.0),
+          trailing: Text("13"),
+          onTap: () {
+            Navigator.pop(context);
+            // Navigator.pushNamed(
+            //   context,
+            //   '/Playlists',
+            //   arguments: {}
+            // );
+          }
+        ),
+      )
     );
   }
 );
