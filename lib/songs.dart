@@ -31,18 +31,22 @@ Widget testGridView = GridView.builder(
   ),
   itemCount: 25,
   itemBuilder: (BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/Songs',
-          arguments: {}
-        );
-        child: Container(
+    return Container(
           padding: const EdgeInsets.all(8),
-          child: Image.asset('images/two2.jpg', height: 250.0, width: 200.0),
-          // child: const Text("He'd have you all unravel at the"),
-          // color: Colors.teal[100],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/Songs',
+                arguments: {}
+              );
+              child: Image.asset(
+                'images/two2.jpg', 
+                height: 250.0, 
+                width: 200.0,
+              ),
+            }
+          ) 
         ),
       },
     ),
