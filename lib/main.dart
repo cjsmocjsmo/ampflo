@@ -40,9 +40,12 @@ class IntroScreen extends StatelessWidget {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
                 ),
-                child: Text('Pop!'),
+                child: Text('Enter'),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(
+                    context,
+                    '/Home'
+                  );
                 },
               ),
               
