@@ -28,32 +28,35 @@ class IntroScreen extends StatelessWidget {
           "Ampflo",
           style: TextStyle(color: Colors.white),
         ),
-        body: Container(
-          decoration: BoxDecoration(
-            color: Colors.lightGreenAccent.shade400,
-          ),
-          child: Column(
-            children: <Widget>[
-
-              Image.asset('images/two.jpg'),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
-                ),
-                child: Text('Enter'),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/Home'
-                  );
-                },
-              ),
-              
-            ]
+        backgroundColor: Colors.lightGreen.shade900,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.lightGreenAccent.shade400,
+        ),
+        child: Container(
+              padding: const EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              child: Column(
+                children: <Widget>[
+                  Image.asset('images/two.jpg'),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                    ),
+                    child: Text('Enter'),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/Home'
+                      );
+                    },
+                  ),
+                ]
+            )
           )
-        )
-      )
     )
+  ));
   }
 }
 
