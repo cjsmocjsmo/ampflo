@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'screens/introscreen.dart';
 import 'screens/mainscreen.dart';
 
-import "screens/albumscreen.dart";
-import "screens/artistscreen.dart";
-import "screens/playlistscreen.dart";
+// import "screens/albumscreen.dart";
+// import "screens/artistscreen.dart";
+// import "screens/playlistscreen.dart";
 
 void main() => runApp(AmpFlo());
 
@@ -14,10 +15,12 @@ class AmpFlo extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return MaterialApp(title: _title, initialRoute: '/', routes: {
-      '/': (context) => MainScreen(),
-      '/Albums': (context) => AlbumScreen(),
-      '/Artists': (context) => ArtistScreen(),
-      '/Playlists': (context) => PlaylistScreen(),
+      // '/': (context) => MainScreen(),
+      '/': (context) => IntroScreen(),
+      '/Main': (context) => MainContentScreen(),
+      // '/Albums': (context) => AlbumScreen(),
+      // '/Artists': (context) => ArtistScreen(),
+      // '/PlayLists': (context) => PlayListScreen(),
       
  
     });
