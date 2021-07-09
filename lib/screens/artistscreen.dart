@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SongsScreen extends StatelessWidget {
+class ArtistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

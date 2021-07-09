@@ -19,16 +19,6 @@ class PlayListsScreen extends StatelessWidget {
                   Tab(icon: Icon(Icons.directions_bike)),
                 ],
               ),
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
               actions: <Widget>[
                 IconButton(
                     onPressed: () {
@@ -90,7 +80,7 @@ class PlayListsScreen extends StatelessWidget {
         //     ),
         //   ),
         // )
-      );
-    )
+      )
+    );
   }
 }
