@@ -178,6 +178,18 @@ class MainScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("AmpFlo"),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/Songs'
+                );
+              },
+              icon: Icon(Icons.queue_music),
+              tooltip: "Go to Songs Page"
+            ),
+          ],
           // backgroundColor: Colors.lightGreen[900],
           bottom: TabBar(
             tabs: [
