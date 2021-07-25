@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/introscreen.dart';
 import 'screens/mainscreen.dart';
+import 'screens/playerscreen.dart';
 
 // import "screens/albumscreen.dart";
 // import "screens/artistscreen.dart";
@@ -17,12 +18,16 @@ class AmpFlo extends StatelessWidget {
     return MaterialApp(title: _title, initialRoute: '/', routes: {
       // '/': (context) => MainScreen(),
       '/': (context) => IntroScreen(),
-      '/Main': (context) => MainContentScreen(),
+      '/Main': (context) => MainScreen(),
+      '/Player': (context) => PlayerScreen()
       // '/Albums': (context) => AlbumScreen(),
       // '/Artists': (context) => ArtistScreen(),
       // '/PlayLists': (context) => PlayListScreen(),
       
  
-    });
+    },
+    theme: ThemeData(
+      primarySwatch: Colors.green,
+    ));
   }
 }

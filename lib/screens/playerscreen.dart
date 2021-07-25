@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen.shade900,
+        // backgroundColor: Colors.lightGreen.shade900,
         title: Text(
           "Ampflo",
           style: TextStyle(color: Colors.white),

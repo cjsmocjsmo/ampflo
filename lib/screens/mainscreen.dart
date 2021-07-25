@@ -94,34 +94,34 @@ import 'dart:convert';
 // import 'tvshows/lokicard.dart';
 
 
-// final List<String> movies = <String>[
-//   'Action',
-//   'Bruce Willis',
-//   'Cartoons',
-//   'Comedy',
-//   'Drama',
-//   'Documentary',
-//   'Fantasy',
-//   'Godzilla',
-//   'Harry Potter',
-//   'Indiana Jones',
-//   'Jurassic Park',
-//   'John Wick',
-//   'John Wayne',
-//   'Kings Men',
-//   'Men In Black',
-//   'Misc',
-//   'Pirates',
-//   'Riddick',
-//   'Star Wars',
-//   'Star Trek',
-//   'Super Heros',
-//   'SciFi',
-//   'Tom Cruize',
-//   'Tremors',
-//   'The Rock',
-//   'X-Men',
-// ];
+final List<String> movies = <String>[
+  'Action',
+  'Bruce Willis',
+  'Cartoons',
+  'Comedy',
+  'Drama',
+  'Documentary',
+  'Fantasy',
+  'Godzilla',
+  'Harry Potter',
+  'Indiana Jones',
+  'Jurassic Park',
+  'John Wick',
+  'John Wayne',
+  'Kings Men',
+  'Men In Black',
+  'Misc',
+  'Pirates',
+  'Riddick',
+  'Star Wars',
+  'Star Trek',
+  'Super Heros',
+  'SciFi',
+  'Tom Cruize',
+  'Tremors',
+  'The Rock',
+  'X-Men',
+];
 
 // final List<String> tvShows = <String>[
 //   'Altered Carbon',
@@ -174,22 +174,17 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Movies TVShows"),
-          backgroundColor: Colors.lightGreen[900],
+          title: Text("AmpFlo"),
+          // backgroundColor: Colors.lightGreen[900],
           bottom: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.movie_creation_sharp)),
-              Tab(text: Text(
-                    'Artists',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0,
-                    ),
-                  ),
-              ),
+              Tab(text: "Artists"),
+              Tab(text: "Albums"),
+              Tab(text: "Playlists")
+              
             ],
           ),
         ),
@@ -198,22 +193,41 @@ class MainScreen extends StatelessWidget {
           child: Row(
             children: [
               Spacer(),
-              IconButton(
-                icon: Icon(Icons.skip_previous, color: Colors.white), 
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
                 onPressed: () {
-                  final String apiPrevious = "http://192.168.0.42:8181/Previous";
-                  previousMov(apiPrevious);
+                  Navigator.pushNamed(
+                    context,
+                    '/Player'
+                  );
                 },
+                child: Text(
+                    'Player',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22.0,
+                    )
+                  ),
               ),
               Spacer(),
-              IconButton(
-                icon: Icon(Icons.skip_next, color: Colors.white), 
-                onPressed: () {
-                  final String apiNext = "http://192.168.0.42:8181/Next";
-                  nextMov(apiNext);
-                },
-              ),
-              Spacer(),
+              // IconButton(
+              //   icon: Icon(Icons.skip_previous, color: Colors.white), 
+              //   onPressed: () {
+              //     // final String apiPrevious = "http://192.168.0.42:8181/Previous";
+              //     // previousMov(apiPrevious);
+              //   },
+              // ),
+              // Spacer(),
+              // IconButton(
+              //   icon: Icon(Icons.skip_next, color: Colors.white), 
+              //   onPressed: () {
+              //     // final String apiNext = "http://192.168.0.42:8181/Next";
+              //     // nextMov(apiNext);
+              //   },
+              // ),
+              // Spacer(),
             ],
           ),
         ),
@@ -221,8 +235,8 @@ class MainScreen extends StatelessWidget {
           FloatingActionButton(
           child: Icon(Icons.close_sharp), 
           onPressed: () { 
-            final String apiStop = "http://192.168.0.42:8181/Stop";
-            stopMov(apiStop); 
+            // final String apiStop = "http://192.168.0.42:8181/Stop";
+            // stopMov(apiStop); 
           }
         ),
         floatingActionButtonLocation:
@@ -233,8 +247,34 @@ class MainScreen extends StatelessWidget {
           ),
           child: TabBarView(
             children: [
-              moviesListView,
-              tvShowsListView(context),
+              Container(
+              child: Text(
+                    'This is Intro screen',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    )
+                  ),
+            ),
+            Container(
+              child: Text(
+                    'This is Intro screen',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    )
+                  ),
+            ),
+             Container(
+              child: Text(
+                    'This is Intro screen',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    )
+                  ),
+            ), // moviesListView,
+              // tvShowsListView(context),
             ],
           ),
         ),
@@ -268,7 +308,7 @@ Widget moviesListView = ListView.builder(
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, '/${movies[index]}');
+        // Navigator.pushNamed(context, '/${movies[index]}');
       },
     );
   }
@@ -279,55 +319,55 @@ Widget tvShowsListView(BuildContext context) {
   shrinkWrap: true,
   padding: const EdgeInsets.all(10.0),
   children: <Widget>[
-    AlienWorldsCard(),
-    AlteredCarbonCard(),
-    BadBatchCard(),
-    DiscoveryCard(),
-    EnterpriseCard(),
-    FalconWinterSoldierCard(),
-    ForAllManKindCard(),
-    LostInSpaceCard(),
-    LokiCard(),
-    LowerDecksCard(),
-    MandalorianCard(),
-    NextGenCard(),
-    OrvilleCard(),
-    PicardCard(),
-    RaisedByWolvesCard(),
-    StarTrekTVCard(),
-    VoyagerCard(),
-    WandaVisionCard(),
+    // AlienWorldsCard(),
+    // AlteredCarbonCard(),
+    // BadBatchCard(),
+    // DiscoveryCard(),
+    // EnterpriseCard(),
+    // FalconWinterSoldierCard(),
+    // ForAllManKindCard(),
+    // LostInSpaceCard(),
+    // LokiCard(),
+    // LowerDecksCard(),
+    // MandalorianCard(),
+    // NextGenCard(),
+    // OrvilleCard(),
+    // PicardCard(),
+    // RaisedByWolvesCard(),
+    // StarTrekTVCard(),
+    // VoyagerCard(),
+    // WandaVisionCard(),
   ]);
 }
 
 
-This works DONT DELETE
-Widget tvShowsListView = ListView.builder(
-  padding: const EdgeInsets.all(10.0),
-  itemCount: tvShows.length,
-  itemBuilder: (BuildContext context, int index) {
-    return InkWell(
-      child: Container(
-        height: 50,
-        color: Colors.amber[400],
-        child: Center(
-            child: Text('${tvShows[index]}',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22.0,
-            )
-          )
-        ),
-      ),
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/${tvShows[index]}',
-        );
-      },
-    );
-  }
-);
+// This works DONT DELETE
+// Widget tvShowsListView = ListView.builder(
+//   padding: const EdgeInsets.all(10.0),
+//   itemCount: tvShows.length,
+//   itemBuilder: (BuildContext context, int index) {
+//     return InkWell(
+//       child: Container(
+//         height: 50,
+//         color: Colors.amber[400],
+//         child: Center(
+//             child: Text('${tvShows[index]}',
+//             style: TextStyle(
+//               fontWeight: FontWeight.bold,
+//               fontSize: 22.0,
+//             )
+//           )
+//         ),
+//       ),
+//       onTap: () {
+//         Navigator.pushNamed(
+//           context,
+//           '/${tvShows[index]}',
+//         );
+//       },
+//     );
+//   }
+// );
 
 
 
