@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class PlayerScreen extends StatelessWidget {
+class PlayListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.lightGreen.shade900,
         title: Text(
-          "Player Page",
+          "PlayList Page",
           style: TextStyle(color: Colors.white),
         ),
         actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/PlayLists'
-              );
-            },
-            icon: Icon(Icons.queue_music),
-            tooltip: "Go to PlayLists Page"
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     Navigator.pushNamed(
+          //       context,
+          //       '/Songs'
+          //     );
+          //   },
+          //   icon: Icon(Icons.album_sharp),
+          //   tooltip: "Go to Songs Page"
+          // ),
           IconButton(
             onPressed: () {
               Navigator.pushNamed(
@@ -39,18 +39,18 @@ class PlayerScreen extends StatelessWidget {
               );
             },
             icon: Icon(Icons.exit_to_app_sharp),
-            tooltip: "Exit Page"
+            tooltip: "Exit App"
           ),
-          // IconButton(
-          //   icon: const Icon(Icons.add_alert),
-          //   tooltip: 'Show Snackbar',
-          //   onPressed: () {
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          //       content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-          //       backgroundColor: Colors.purple,
-          //     ));
-          //   },
-          // ),
+          IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
+                backgroundColor: Colors.purple,
+              ));
+            },
+          ),
         ]
       ),
       body: Container(

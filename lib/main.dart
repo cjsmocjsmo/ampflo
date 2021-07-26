@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/introscreen.dart';
 import 'screens/mainscreen.dart';
 import 'screens/playerscreen.dart';
+import 'screens/playlistsscreen.dart';
 
 // import "screens/albumscreen.dart";
 // import "screens/artistscreen.dart";
@@ -19,10 +20,10 @@ class AmpFlo extends StatelessWidget {
       // '/': (context) => MainScreen(),
       '/': (context) => IntroScreen(),
       '/Main': (context) => MainScreen(),
-      '/Player': (context) => PlayerScreen()
+      '/Player': (context) => PlayerScreen(),
       // '/Albums': (context) => AlbumScreen(),
       // '/Artists': (context) => ArtistScreen(),
-      // '/PlayLists': (context) => PlayListScreen(),
+      '/PlayLists': (context) => PlayListScreen(),
       
  
     },

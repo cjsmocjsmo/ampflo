@@ -123,31 +123,6 @@ final List<String> movies = <String>[
   'X-Men',
 ];
 
-// final List<String> tvShows = <String>[
-//   'Altered Carbon',
-//   'Alien Worlds',
-//   'Discovery',
-//   'Enterprise',
-//   'For All Man Kind',
-//   'Last Ship',
-//   'Lost In Space',
-//   'Lower Decks',
-//   'Mandalorian',
-//   'Next Generation',
-//   'Orville',
-//   'Picard',
-//   'Raised By Wolves',
-//   'Sean Carroll',
-//   'SpaceTime',
-//   'Star Trek TV',
-//   'Falcon Winter Soldier',
-//   'Voyager',
-//   'WandaVision',
-//   'Invincible',
-//   'The Bad Batch',
-//   'Loki'
-// ];
-
 class MainScreen extends StatelessWidget {
 
   Future<void> stopMov(stopURL) async {
@@ -174,7 +149,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: Text("AmpFlo"),
@@ -183,11 +158,31 @@ class MainScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
-                  '/Songs'
+                  '/PlayLists'
                 );
               },
               icon: Icon(Icons.queue_music),
-              tooltip: "Go to Songs Page"
+              tooltip: "Go to Playlists Page"
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/Player'
+                );
+              },
+              icon: Icon(Icons.speaker),
+              tooltip: "Go to Player Page"
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/'
+                );
+              },
+              icon: Icon(Icons.exit_to_app_sharp),
+              tooltip: "Exit App"
             ),
           ],
           // backgroundColor: Colors.lightGreen[900],
@@ -195,7 +190,7 @@ class MainScreen extends StatelessWidget {
             tabs: [
               Tab(text: "Artists"),
               Tab(text: "Albums"),
-              Tab(text: "Playlists")
+              
               
             ],
           ),
@@ -277,16 +272,8 @@ class MainScreen extends StatelessWidget {
                     )
                   ),
             ),
-             Container(
-              child: Text(
-                    'This is Intro screen',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                    )
-                  ),
-            ), // moviesListView,
-              // tvShowsListView(context),
+            // moviesListView,
+            // tvShowsListView(context),
             ],
           ),
         ),
