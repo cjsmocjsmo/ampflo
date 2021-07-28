@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
+import 'models/artistmodel.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class ArtistScreen extends StatefulWidget {
+  // ArtistScreen({Key? key, required this.title}) : super(key: key);
+  ArtistScreen({Key? key}) : super(key: key);
 
-  final String title;
+  // final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _ArtistScreenState createState() => new _ArtistScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ArtistScreenState extends State<ArtistScreen> {
   List<int> verticalData = [];
-  List<int> horizontalData = [];
+  // List<int> horizontalData = [];
 
   final int increment = 10;
 
   bool isLoadingVertical = false;
-  bool isLoadingHorizontal = false;
+  // bool isLoadingHorizontal = false;
 
   @override
   void initState() {
     _loadMoreVertical();
-    _loadMoreHorizontal();
+    // _loadMoreHorizontal();
     super.initState();
   }
 
@@ -33,6 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Add in an artificial delay
     await new Future.delayed(const Duration(seconds: 2));
+    // verticalData = fetchArtist()
+    increment = fetchArtist()
 
     verticalData.addAll(
         List.generate(increment, (index) => verticalData.length + index));
@@ -42,27 +46,49 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future _loadMoreHorizontal() async {
-    setState(() {
-      isLoadingHorizontal = true;
-    });
+  // Future _loadMoreHorizontal() async {
+  //   setState(() {
+  //     isLoadingHorizontal = true;
+  //   });
 
-    // Add in an artificial delay
-    await new Future.delayed(const Duration(seconds: 2));
+  //   // Add in an artificial delay
+  //   await new Future.delayed(const Duration(seconds: 2));
 
-    horizontalData.addAll(
-        List.generate(increment, (index) => horizontalData.length + index));
+  //   horizontalData.addAll(
+  //       List.generate(increment, (index) => horizontalData.length + index));
 
-    setState(() {
-      isLoadingHorizontal = false;
-    });
-  }
+  //   setState(() {
+  //     isLoadingHorizontal = false;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Artist Page"),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/Main'
+              );
+            },
+            icon: Icon(Icons.home),
+            tooltip: "Go To Home Page"
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/'
+              );
+            },
+            icon: Icon(Icons.exit_to_app_sharp),
+            tooltip: "Exit App"
+          ),
+        ]
       ),
       body: LazyLoadScrollView(
         isLoading: isLoadingVertical,
@@ -70,26 +96,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scrollbar(
           child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Nested horizontal ListView',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                  height: 180,
-                  child: LazyLoadScrollView(
-                      isLoading: isLoadingHorizontal,
-                      scrollDirection: Axis.horizontal,
-                      onEndOfPage: () => _loadMoreHorizontal(),
-                      child: Scrollbar(
-                          child: ListView.builder(
-                              itemCount: horizontalData.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, position) {
-                                return DemoItem(position);
-                              })))),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

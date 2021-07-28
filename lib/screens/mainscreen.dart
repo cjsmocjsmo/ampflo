@@ -158,6 +158,16 @@ class MainScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
+                  '/Artists'
+                );
+              },
+              icon: Icon(Icons.speaker),
+              tooltip: "Go to Artists Page"
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
                   '/PlayLists'
                 );
               },
