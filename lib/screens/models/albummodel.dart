@@ -1,4 +1,4 @@
-'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 Future<Album> fetchAlbum() async {
   final response = await http
