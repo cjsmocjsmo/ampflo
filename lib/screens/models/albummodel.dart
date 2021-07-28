@@ -16,8 +16,8 @@ Future<Album> fetchAlbum() async {
 }
 
 class Album {
-  final string Album;
-  final string Albumid;
+  final String Album;
+  final String Albumid;
 
   Album({
     required this.Album,

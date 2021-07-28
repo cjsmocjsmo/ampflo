@@ -16,8 +16,8 @@ Future<Artist> fetchArtist() async {
 }
 
 class Artist {
-  final string artist;
-  final string artistid;
+  final String artist;
+  final String artistid;
 
   Artist({
     required this.artist,
