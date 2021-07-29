@@ -33,7 +33,9 @@ class ArtistScreen extends StatelessWidget {
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Alien Worlds"),
+          // leading: new Icon(Icons.menu),
+          // iconTheme: IconThemeData(color: Colors.white),
+          title: Text("Artists"),
           // backgroundColor: Colors.lightGreen[900],
           actions: <Widget>[
             IconButton(
@@ -68,72 +70,8 @@ class ArtistScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.lightGreen[900],
-          child: Row(
-            children: [
-              // Spacer(),
-              // TextButton(
-              //   style: TextButton.styleFrom(
-              //     textStyle: const TextStyle(fontSize: 20),
-              //   ),
-              //   onPressed: () {
-              //     Navigator.pushNamed(
-              //       context,
-              //       '/Player'
-              //     );
-              //   },
-              //   child: Text(
-              //       'Artists',
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 22.0,
-              //       )
-              //     ),
-              // ),
-              Spacer(),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/Player'
-                    );
-                  },
-                  child: Text(
-                      'Albums',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22.0,
-                      )
-                    ),
-                  ),
-              ),
-              Spacer(),
-              // IconButton(
-              //   icon: Icon(Icons.skip_previous, color: Colors.white), 
-              //   onPressed: () {
-              //     // final String apiPrevious = "http://192.168.0.42:8181/Previous";
-              //     // previousMov(apiPrevious);
-              //   },
-              // ),
-              // Spacer(),
-              // IconButton(
-              //   icon: Icon(Icons.skip_next, color: Colors.white), 
-              //   onPressed: () {
-              //     // final String apiNext = "http://192.168.0.42:8181/Next";
-              //     // nextMov(apiNext);
-              //   },
-              // ),
-              // Spacer(),
-            ],
-          ),
-        ),
-
+        drawer: MyDrawer(),
+        
 
 
 
@@ -203,6 +141,51 @@ class ArtistScreen extends StatelessWidget {
                                 //   ],
                                 // ),
                             //   ),
+      ),
+    );
+  }
+}
+
+
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+    child: ListView(
+      children: <Widget>[
+        ListTile(
+          title: Text("Artists"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, '/Artists');
+          },
+        ),
+        ListTile(
+          title: Text("Albums"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, '/Albums');
+          },
+        ),
+        ListTile(
+          title: Text("PlayLists"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, '/PlayLists');
+          },
+        ),
+        ListTile(
+          title: Text("Player"),
+          trailing: Icon(Icons.arrow_forward),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, '/Player');
+          },
+        ),
+      ]
       ),
     );
   }

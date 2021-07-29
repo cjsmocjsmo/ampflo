@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'artistscreen.dart';
 
 class PlayerScreen extends StatelessWidget {
   @override
@@ -53,6 +54,7 @@ class PlayerScreen extends StatelessWidget {
           // ),
         ]
       ),
+      drawer: MyDrawer(),
       body: Container(
       decoration: BoxDecoration(
         color: Colors.lightGreenAccent.shade400,

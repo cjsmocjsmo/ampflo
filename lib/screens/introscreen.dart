@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'mainscreen.dart';
-
+import 'artistscreen.dart';
 class IntroScreen extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
@@ -42,6 +42,7 @@ class _MyCustomFormState extends State<IntroScreen> {
 
         // backgroundColor: Colors.lightGreen[900],
       ),
+      drawer: MyDrawer(),
       body: Container(
         decoration: BoxDecoration(
           color: Colors.lightGreenAccent.shade400,
