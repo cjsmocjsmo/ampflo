@@ -1,159 +1,208 @@
 import 'package:flutter/material.dart';
-import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
-import 'models/artistmodel.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class ArtistScreen extends StatefulWidget {
-  // ArtistScreen({Key? key, required this.title}) : super(key: key);
-  ArtistScreen({Key? key}) : super(key: key);
+class ArtistScreen extends StatelessWidget {
 
-  // final String title;
+  final String apiUrl = "http://192.168.0.91:9090/InitArtistInfo";
 
-  @override
-  _ArtistScreenState createState() => new _ArtistScreenState();
-}
-
-class _ArtistScreenState extends State<ArtistScreen> {
-  List<int> verticalData = [];
-  // List<int> horizontalData = [];
-
-  final int increment = 10;
-
-  bool isLoadingVertical = false;
-  // bool isLoadingHorizontal = false;
-
-  @override
-  void initState() {
-    _loadMoreVertical();
-    // _loadMoreHorizontal();
-    super.initState();
+  Future<List<dynamic>> fetchArtists() async {
+    var result;
+    try {
+      var result = await http.get(Uri.parse(apiUrl));
+      return json.decode(result.body);
+    } catch (e) {
+      print("OOOOOh Fuck");
+    }
+    return result;
   }
 
-  Future _loadMoreVertical() async {
-    setState(() {
-      isLoadingVertical = true;
-    });
-
-    // Add in an artificial delay
-    await new Future.delayed(const Duration(seconds: 2));
-    // verticalData = fetchArtist()
-    increment = fetchArtist()
-
-    verticalData.addAll(
-        List.generate(increment, (index) => verticalData.length + index));
-
-    setState(() {
-      isLoadingVertical = false;
-    });
-  }
-
-  // Future _loadMoreHorizontal() async {
-  //   setState(() {
-  //     isLoadingHorizontal = true;
-  //   });
-
-  //   // Add in an artificial delay
-  //   await new Future.delayed(const Duration(seconds: 2));
-
-  //   horizontalData.addAll(
-  //       List.generate(increment, (index) => horizontalData.length + index));
-
-  //   setState(() {
-  //     isLoadingHorizontal = false;
-  //   });
+  // Future<void> playEpi(playURL) async {
+  //   var resultPlay;
+  //   try {
+  //     var resultPlay = await http.get(Uri.parse(playURL));
+  //     return json.decode(resultPlay.body);
+  //   } catch (e) {
+  //     print("OOOOOH FUUUUCK 2");
+  //   }
+  //   return resultPlay;
   // }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Artist Page"),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/Main'
-              );
-            },
-            icon: Icon(Icons.home),
-            tooltip: "Go To Home Page"
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/'
-              );
-            },
-            icon: Icon(Icons.exit_to_app_sharp),
-            tooltip: "Exit App"
-          ),
-        ]
-      ),
-      body: LazyLoadScrollView(
-        isLoading: isLoadingVertical,
-        onEndOfPage: () => _loadMoreVertical(),
-        child: Scrollbar(
-          child: ListView(
+    return Center(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Alien Worlds"),
+          // backgroundColor: Colors.lightGreen[900],
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/PlayLists'
+                );
+              },
+              icon: Icon(Icons.queue_music),
+              tooltip: "Go to Playlists Page"
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/Player'
+                );
+              },
+              icon: Icon(Icons.speaker),
+              tooltip: "Go to Player Page"
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/'
+                );
+              },
+              icon: Icon(Icons.exit_to_app_sharp),
+              tooltip: "Exit App"
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.lightGreen[900],
+          child: Row(
             children: [
+              // Spacer(),
+              // TextButton(
+              //   style: TextButton.styleFrom(
+              //     textStyle: const TextStyle(fontSize: 20),
+              //   ),
+              //   onPressed: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       '/Player'
+              //     );
+              //   },
+              //   child: Text(
+              //       'Artists',
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 22.0,
+              //       )
+              //     ),
+              // ),
+              Spacer(),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Vertical ListView',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: verticalData.length,
-                itemBuilder: (context, position) {
-                  return DemoItem(position);
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DemoItem extends StatelessWidget {
-  final int position;
-
-  const DemoItem(
-    this.position, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    color: Colors.grey,
-                    height: 40.0,
-                    width: 40.0,
+                padding: EdgeInsets.all(10.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
-                  SizedBox(width: 8.0),
-                  Text("Item $position"),
-                ],
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/Player'
+                    );
+                  },
+                  child: Text(
+                      'Albums',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22.0,
+                      )
+                    ),
+                  ),
               ),
-              Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed vulputate orci. Proin id scelerisque velit. Fusce at ligula ligula. Donec fringilla sapien odio, et faucibus tortor finibus sed. Aenean rutrum ipsum in sagittis auctor. Pellentesque mattis luctus consequat. Sed eget sapien ut nibh rhoncus cursus. Donec eget nisl aliquam, ornare sapien sit amet, lacinia quam."),
+              Spacer(),
+              // IconButton(
+              //   icon: Icon(Icons.skip_previous, color: Colors.white), 
+              //   onPressed: () {
+              //     // final String apiPrevious = "http://192.168.0.42:8181/Previous";
+              //     // previousMov(apiPrevious);
+              //   },
+              // ),
+              // Spacer(),
+              // IconButton(
+              //   icon: Icon(Icons.skip_next, color: Colors.white), 
+              //   onPressed: () {
+              //     // final String apiNext = "http://192.168.0.42:8181/Next";
+              //     // nextMov(apiNext);
+              //   },
+              // ),
+              // Spacer(),
             ],
           ),
         ),
+
+
+
+
+
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.lightGreenAccent.shade400,
+        ),
+          child: Center(
+            child:
+              FutureBuilder<List<dynamic>>(
+                future: fetchArtists(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      padding: const EdgeInsets.all(8),
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            print(snapshot.data[index]["artistID"]);
+                            // String dirp = "/media/pi/PiTB/media/TVShows";
+                            // String ap = dirp + snapshot.data[index]["tvfspath"];
+                            // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
+                            // playEpi(apiPU);
+                            // Navigator.pop(context);
+                          },
+                          child: 
+
+                          Container(
+                            height: 75,
+                            color: Colors.green[600],
+                            child:Center(
+                              child: Text(
+                                '${snapshot.data[index]['artist']}',
+                                style: TextStyle(fontSize: 26, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                  
+                }
+              ),
+          )
+        ),
+                                
+                                  
+                                  
+                      
+                                //  // button pressed
+                                // child: Column(
+                                //   mainAxisAlignment: MainAxisAlignment.center,
+                                //   children: <Widget>[
+                                //     // Icon(Icons.call), // icon
+                                //     Text(
+                                //       "1",
+                                //       style: TextStyle(
+                                //         fontFamily: "Gothic",
+                                //         fontWeight: FontWeight.bold,
+                                //         fontSize: 22, 
+                                //         color: Colors.black),
+                                //     ), // text
+                                //   ],
+                                // ),
+                            //   ),
       ),
     );
   }

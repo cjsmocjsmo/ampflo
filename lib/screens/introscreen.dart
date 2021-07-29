@@ -85,7 +85,7 @@ class _MyCustomFormState extends State<IntroScreen> {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
-                  '/Main'
+                  '/Artists'
                 );
               },
               child: const Text('AMPFLO'),
