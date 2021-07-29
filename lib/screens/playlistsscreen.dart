@@ -11,48 +11,6 @@ class PlayListScreen extends StatelessWidget {
           "PlayList Page",
           style: TextStyle(color: Colors.white),
         ),
-        actions: <Widget>[
-          // IconButton(
-          //   onPressed: () {
-          //     Navigator.pushNamed(
-          //       context,
-          //       '/Songs'
-          //     );
-          //   },
-          //   icon: Icon(Icons.album_sharp),
-          //   tooltip: "Go to Songs Page"
-          // ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/Main'
-              );
-            },
-            icon: Icon(Icons.home),
-            tooltip: "Go To Home Page"
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/'
-              );
-            },
-            icon: Icon(Icons.exit_to_app_sharp),
-            tooltip: "Exit App"
-          ),
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('ZZ Top \n Fandango \n Mexican Black Bird'),
-                backgroundColor: Colors.purple,
-              ));
-            },
-          ),
-        ]
       ),
       drawer: MyDrawer(),
       body: Container(

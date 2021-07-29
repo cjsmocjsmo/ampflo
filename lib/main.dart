@@ -28,7 +28,7 @@ class AmpFlo extends StatelessWidget {
  
     },
     theme: ThemeData(
-      primarySwatch: Colors.green,
+      primarySwatch: Colors.purple,
     ));
   }
 }

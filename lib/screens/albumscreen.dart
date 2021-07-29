@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class ArtistScreen extends StatelessWidget {
+class AlbumScreen extends StatelessWidget {
 
-  final String apiUrl = "http://192.168.0.91:9090/InitArtistInfo";
+  final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
 
-  Future<List<dynamic>> fetchArtists() async {
+  Future<List<dynamic>> fetchAlbums() async {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
@@ -22,7 +22,7 @@ class ArtistScreen extends StatelessWidget {
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Artists"),
+          title: Text("Albums"),
         ),
         drawer: MyDrawer(),
         body: Container(
@@ -33,7 +33,7 @@ class ArtistScreen extends StatelessWidget {
           child: Center(
             child:
               FutureBuilder<List<dynamic>>(
-                future: fetchArtists(),
+                future: fetchAlbums(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -42,7 +42,7 @@ class ArtistScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            print(snapshot.data[index]["artistID"]);
+                            print(snapshot.data[index]["albumID"]);
                             // String dirp = "/media/pi/PiTB/media/TVShows";
                             // String ap = dirp + snapshot.data[index]["tvfspath"];
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
@@ -55,7 +55,7 @@ class ArtistScreen extends StatelessWidget {
                             color: Colors.purpleAccent[200],
                             child:Center(
                               child: Text(
-                                '${snapshot.data[index]['artist']}',
+                                '${snapshot.data[index]['Album']}',
                                 style: TextStyle(fontSize: 26, color: Colors.black),
                               ),
                             ),
@@ -70,58 +70,6 @@ class ArtistScreen extends StatelessWidget {
               ),
           )
         ),
-      ),
-    );
-  }
-}
-
-class MyDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-    child: ListView(
-      children: <Widget>[
-        ListTile(
-          title: Text("Artists"),
-          trailing: Icon(Icons.arrow_forward),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/Artists');
-          },
-        ),
-        ListTile(
-          title: Text("Albums"),
-          trailing: Icon(Icons.arrow_forward),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/Albums');
-          },
-        ),
-        ListTile(
-          title: Text("PlayLists"),
-          trailing: Icon(Icons.arrow_forward),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/PlayLists');
-          },
-        ),
-        ListTile(
-          title: Text("Player"),
-          trailing: Icon(Icons.arrow_forward),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/Player');
-          },
-        ),
-         ListTile(
-          title: Text("EXIT"),
-          trailing: Icon(Icons.arrow_forward),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/');
-          },
-        ),
-      ]
       ),
     );
   }

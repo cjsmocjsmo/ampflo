@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'mainscreen.dart';
 import 'artistscreen.dart';
+
 class IntroScreen extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds data related to the Form.
 class _MyCustomFormState extends State<IntroScreen> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
   final myController = TextEditingController();
 
   @override
@@ -23,29 +19,32 @@ class _MyCustomFormState extends State<IntroScreen> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is removed from the widget tree.
-    // This also removes the _printLatestValue listener.
     myController.dispose();
     super.dispose();
   }
 
   void _printLatestValue() {
+    if (myController.text.length != 0) {
+      pword = true;
+    }
+    
     print('Second text field: ${myController.text}');
   }
+  var uname = false;
+  var pword = false;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-        title: Text('AmpFlog'),
-
-        // backgroundColor: Colors.lightGreen[900],
+        title: Text('AmpFlo'),
       ),
       drawer: MyDrawer(),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.lightGreenAccent.shade400,
+          // color: Colors.lightGreenAccent.shade400,
+          color: Colors.purpleAccent[200],
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -55,13 +54,16 @@ class _MyCustomFormState extends State<IntroScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    
                   ),
                   filled: true,
                   fillColor: Colors.white,
                   labelText: 'Username',
                 ),
                 onChanged: (text) {
+                  if (text.length != 0) {
+                    uname = true;
+                  }
+
                   print('First text field: $text');
                 },
               ),
@@ -84,10 +86,13 @@ class _MyCustomFormState extends State<IntroScreen> {
                 primary: Colors.black,
               ),
               onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/Artists'
-                );
+                if (uname != false && pword != false) {
+                  Navigator.pushNamed(
+                    context,
+                    '/Artists'
+                  );
+                }
+                
               },
               child: const Text('AMPFLO'),
             ),
