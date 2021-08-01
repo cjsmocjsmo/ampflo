@@ -20,7 +20,7 @@ class PlayListScreen extends StatelessWidget {
       child: Column(
         children: <Widget>[
           buttonSection,
-          Image.asset('images/two.jpg'),
+          // Image.asset('images/two.jpg'),
           Center(
             child: Column(
               children: <Widget>[
@@ -46,28 +46,28 @@ class PlayListScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    "Fandango",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    "Mexican Black Bird",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                )
+                // Padding(
+                //   padding: EdgeInsets.all(10.0),
+                //   child: Text(
+                //     "Fandango",
+                //     style: TextStyle(
+                //       fontSize: 14,
+                //       fontWeight: FontWeight.w600,
+                //       color: Colors.black,
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.all(10.0),
+                //   child: Text(
+                //     "Mexican Black Bird",
+                //     style: TextStyle(
+                //       fontSize: 14,
+                //       fontWeight: FontWeight.w600,
+                //       color: Colors.black,
+                //     ),
+                //   ),
+                // )
               ]
             ) 
           ),
@@ -103,10 +103,10 @@ Widget buttonSection = Container(
   child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      _buildButtonColumn(Icons.skip_previous_sharp, "PREVIOUS"),
-      _buildButtonColumn(Icons.play_arrow_sharp, 'PLAY'),
-      _buildButtonColumn(Icons.stop_sharp, 'STOP'),
-      _buildButtonColumn(Icons.skip_next_sharp, 'NEXT'),
+      _buildButtonColumn(Icons.add_sharp, "ADD PLAYLIST"),
+      _buildButtonColumn(Icons.add_sharp, 'ADD RANDOM PLAYLIST'),
+      // _buildButtonColumn(Icons.stop_sharp, 'STOP'),
+      // _buildButtonColumn(Icons.skip_next_sharp, 'NEXT'),
     ],
   ),
 );

@@ -87,6 +87,7 @@ class _MyCustomFormState extends State<IntroScreen> {
               ),
               onPressed: () {
                 if (uname != false && pword != false) {
+                  Navigator.of(context).pop();
                   Navigator.pushNamed(
                     context,
                     '/Artists'

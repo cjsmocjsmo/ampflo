@@ -48,6 +48,9 @@ class ArtistScreen extends StatelessWidget {
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
                             // playEpi(apiPU);
                             // Navigator.pop(context);
+                            // Navigator.of(context).pop();
+                            // Navigator.pushNamed(context, '/AlbumsForArtist');
+                            Navigator.of(context).pushNamed('/AlbumsForArtist', arguments: snapshot.data[index]["artistID"]);
                           },
                           child: 
                           Container(
@@ -82,40 +85,45 @@ class MyDrawer extends StatelessWidget {
     child: ListView(
       children: <Widget>[
         ListTile(
-          title: Text("Artists"),
+          title: Text("Artists", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold)),
           trailing: Icon(Icons.arrow_forward),
+          tileColor: Colors.red,
           onTap: () {
             Navigator.of(context).pop();
             Navigator.pushNamed(context, '/Artists');
           },
         ),
         ListTile(
-          title: Text("Albums"),
+          title: Text("Albums", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold)),
           trailing: Icon(Icons.arrow_forward),
+          tileColor: Colors.blue,
           onTap: () {
             Navigator.of(context).pop();
             Navigator.pushNamed(context, '/Albums');
           },
         ),
         ListTile(
-          title: Text("PlayLists"),
+          title: Text("PlayLists", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold)),
           trailing: Icon(Icons.arrow_forward),
+          tileColor: Colors.purpleAccent,
           onTap: () {
             Navigator.of(context).pop();
             Navigator.pushNamed(context, '/PlayLists');
           },
         ),
         ListTile(
-          title: Text("Player"),
+          title: Text("Player", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold)),
           trailing: Icon(Icons.arrow_forward),
+          tileColor: Colors.brown,
           onTap: () {
             Navigator.of(context).pop();
             Navigator.pushNamed(context, '/Player');
           },
         ),
          ListTile(
-          title: Text("EXIT"),
+          title: Text("EXIT", style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold)),
           trailing: Icon(Icons.arrow_forward),
+          tileColor: Colors.pink,
           onTap: () {
             Navigator.of(context).pop();
             Navigator.pushNamed(context, '/');

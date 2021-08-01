@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'artistscreen.dart';
+import 'modals/artistmodel.dart';
 
-class AlbumScreen extends StatelessWidget {
+class AlbumForArtistScreen extends StatelessWidget {
 
-  final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
 
-  Future<List<dynamic>> fetchAlbums() async {
+  Future<List<dynamic>> fetchAlbums(apiUrl) async {
+    
+    print(apiUrl);
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
       return json.decode(result.body);
     } catch (e) {
+      print(e);
       print("OOOOOh Fuck");
     }
     return result;
@@ -20,6 +23,9 @@ class AlbumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final artistID = ModalRoute.of(context)?.settings.arguments;
+    final String apiUrl = "http://192.168.0.91:9090/AlbumsForArtist?selected=$artistID";
+
     return Center(
       child: Scaffold(
         appBar: AppBar(
@@ -34,7 +40,7 @@ class AlbumScreen extends StatelessWidget {
           child: Center(
             child:
               FutureBuilder<List<dynamic>>(
-                future: fetchAlbums(),
+                future: fetchAlbums(apiUrl),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -47,9 +53,8 @@ class AlbumScreen extends StatelessWidget {
                             // String dirp = "/media/pi/PiTB/media/TVShows";
                             // String ap = dirp + snapshot.data[index]["tvfspath"];
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
-                            // playEpi(apiPU);;
+                            // playEpi(apiPU);
                             // Navigator.of(context).pop();
-                            
                           },
                           child: Card(
                             child: ListTile(
