@@ -7,7 +7,20 @@ import 'modals/artistmodel.dart';
 class AlbumForArtistScreen extends StatelessWidget {
 
 
-  Future<List<dynamic>> fetchAlbums(apiUrl) async {
+  // Future<List<dynamic>> fetchAlbums(apiUrl) async {
+    
+  //   print(apiUrl);
+  //   var result;
+  //   try {
+  //     var result = await http.get(Uri.parse(apiUrl));
+  //     return json.decode(result.body);
+  //   } catch (e) {
+  //     print(e);
+  //     print("OOOOOh Fuck");
+  //   }
+  //   return result;
+  // }
+  Future<ArtistView<dynamic>> fetchAlbums(apiUrl) async {
     
     print(apiUrl);
     var result;
