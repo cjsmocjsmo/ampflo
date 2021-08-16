@@ -6,11 +6,11 @@ import 'screens/albumscreen.dart';
 import 'screens/playerscreen.dart';
 import 'screens/playlistsscreen.dart';
 import 'screens/songsforalbumscreen.dart';
-import 'package:audio_service/audio_service.dart';
-// import 'screens/player2screen.dart';
 
-// import 'package:audio_service/audio_service.dart';
-// import 'package:audio_session/audio_session.dart';
+import 'screens/player2screen.dart';
+
+import 'package:audio_service/audio_service.dart';
+import 'package:audio_session/audio_session.dart';
 
 // import "screens/albumscreen.dart";
 // import "screens/playlistscreen.dart";
@@ -31,7 +31,7 @@ class AmpFlo extends StatelessWidget {
       '/Albums': (context) => AlbumScreen(),
       '/PlayLists': (context) => PlayListScreen(),
       '/Player': (context) => PlayerScreen(),
-      // '/Player2': (context) => AudioServiceWidget(child: Player2Screen()),
+      '/Player2': (context) => AudioServiceWidget(child: Player2Screen()),
  
     },
     debugShowCheckedModeBanner: false,
