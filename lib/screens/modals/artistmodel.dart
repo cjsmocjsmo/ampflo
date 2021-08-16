@@ -1,63 +1,67 @@
 class ArtistView {
-  final int _id;
-  final string Artist;
-  final string ArtistID;
-  final List<dynamic> Albums;
-  final string Page;
-  final string Idx;
+  String? artist;
+  String? artistID;
+  List<Album>? albums;
+  String? page;
+  String? idx;
 
-  ArtistView({this._id, this.Artist, this.ArtistID, this.Albums, this.Page, this.Idx});
-}
-
-class Albums {
-  final int _id;
-  final string DirPath;
-  final string Filename;
-  final string Extension;
-  final string FileID;
-  final string Artist;
-  final string ArtistID;
-  final string Album;
-  final string AlbumID;
-  final string Title;
-  final string Genre;
-  final string TitlePage;
-  final string PicID;
-  final string PicPath;
-  final string PicHttpAddr;
-  final string Idx;
-
-  Albums({this._id, this.DirPath, this.Filename, this.Extension, this.FileID, this.Artist, this.ArtistID, this.Album, this.AlbumID, this.Tittle, this.Genre, this.TitlePage, this.PicID, this.PicPath, this.PicHttpAddr, this.Idx})
-
-  factory Albums.fromJson(Map<String, dynamic> parsedJson) {
-    return Albums(
-    _id:parsedJson['_id'],
-    DirPath:parsedJson['DirPath'],
-    Filename:parsedJson['Filename'],
-    Extension:parsedJson['Filename'],
-    FileID:parsedJson['FileID'],
-    Artist:parsedJson['Artist'],
-    ArtistID:parsedJson['ArtistID'],
-    Album:parsedJson['Album'],
-    AlbumID:parsedJson['AlbumID'],
-    Title:parsedJson['Title'],
-    Genre:parsedJson['Genre'],
-    TitlePage:parsedJson['TitlePage'],
-    PicID:parsedJson['PicID'],
-    PicPath:parsedJson['PicPath'],
-    PicHttpAddr:parsedJson['PicHttpAddr'],
-    Idx:parsedJson['Idx'],
+  ArtistView({this.artist, this.artistID, this.albums, this.page, this.idx});
+  
+  factory ArtistView.fromJson(Map<String, dynamic> parsedJson) {
+    var list = parsedJson['Albums'] as List;
+    // print(list.runtimeType); //returns List<dynamic>
+    List<Album> albumsList = list.map((i) => Album.fromJson(i)).toList();
+    print("artistview complete");
+    return ArtistView(
+      artist:parsedJson['Artist'],
+      artistID:parsedJson['ArtistID'],
+      albums: albumsList,
+      page:parsedJson['Page'],
+      idx:parsedJson['Idx'],
     );
   }
+}
 
-  factory ArtistView.fromJson(Map<String, dynamic> parsedJson) {
-    return ArtistView(
-      _id:parsedJson['_id'],
-      Artist:parsedJson['Artist'],
-      ArtistID:parsedJson['ArtistID'],
-      Albums:parsedJson['Albums'],
-      Page:parsedJson['Page'],
-      Idx:parsedJson['Idx'],
+class Album {
+  String? id;
+  String? dirPath;
+  String? filename;
+  String? ext;
+  String? fileID;
+  String? artist;
+  String? artistID;
+  String? album;
+  String? albumID;
+  String? title;
+  String? genre;
+  String? titlePage;
+  String? picID;
+  String? picPath;
+  String? picHttpAddr;
+  String? idx;
+
+  Album({this.id, this.dirPath, this.filename, this.ext, this.fileID, this.artist, this.artistID, 
+    this.album, this.albumID, this.title, this.genre, this.titlePage, this.picID, 
+    this.picPath, this.picHttpAddr, this.idx});
+
+  factory Album.fromJson(Map<String, dynamic> parsedJson) {
+    return Album(
+    id:parsedJson['_id'],
+    dirPath:parsedJson['dirPath'],
+    filename:parsedJson['filename'],
+    ext:parsedJson['ext'],
+    fileID:parsedJson['fileID'],
+    artist:parsedJson['artist'],
+    artistID:parsedJson['artistID'],
+    album:parsedJson['album'],
+    albumID:parsedJson['albumID'],
+    title:parsedJson['title'],
+    genre:parsedJson['genre'],
+    titlePage:parsedJson['titlePage'],
+    picID:parsedJson['picID'],
+    picPath:parsedJson['picPath'],
+    picHttpAddr:parsedJson['picHttpAddr'],
+    idx:parsedJson['idx'],
     );
   }
 }

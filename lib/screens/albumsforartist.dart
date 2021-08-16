@@ -2,36 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'artistscreen.dart';
-import 'modals/artistmodel.dart';
 
 class AlbumForArtistScreen extends StatelessWidget {
 
-
-  // Future<List<dynamic>> fetchAlbums(apiUrl) async {
-    
-  //   print(apiUrl);
-  //   var result;
-  //   try {
-  //     var result = await http.get(Uri.parse(apiUrl));
-  //     return json.decode(result.body);
-  //   } catch (e) {
-  //     print(e);
-  //     print("OOOOOh Fuck");
-  //   }
-  //   return result;
-  // }
-  Future<ArtistView<dynamic>> fetchAlbums(apiUrl) async {
-    
-    print(apiUrl);
-    var result;
-    try {
-      var result = await http.get(Uri.parse(apiUrl));
-      return json.decode(result.body);
-    } catch (e) {
-      print(e);
-      print("OOOOOh Fuck");
-    }
-    return result;
+  Future<List<dynamic>> fetchAlbums(apiUrl) async {
+    final result = await http.get(Uri.parse(apiUrl));
+    return json.decode(result.body);
   }
 
   @override
@@ -44,7 +20,13 @@ class AlbumForArtistScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Albums"),
         ),
-        drawer: MyDrawer(),
+        drawer: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.purple, //desired color
+          ),
+          child: MyDrawer(),
+        ),
+        // drawer: MyDrawer(),
         body: Container(
           decoration: BoxDecoration(
             // color: Colors.lightGreenAccent.shade400,
@@ -62,17 +44,18 @@ class AlbumForArtistScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            print(snapshot.data[index]["albumID"]);
+                            
                             // String dirp = "/media/pi/PiTB/media/TVShows";
                             // String ap = dirp + snapshot.data[index]["tvfspath"];
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
                             // playEpi(apiPU);
                             // Navigator.of(context).pop();
+                            Navigator.of(context).pushNamed('/SongsForAlbum', arguments: snapshot.data[index]["albumID"]);
                           },
                           child: Card(
                             child: ListTile(
-                              leading: Image.network(snapshot.data[index]["PicPath"]),
-                              title: Text(snapshot.data[index]["Album"]),
+                              leading: Image.network(snapshot.data[index]["picHttpAddr"]),
+                              title: Text(snapshot.data[index]["album"]),
                             ),
                           ),
 

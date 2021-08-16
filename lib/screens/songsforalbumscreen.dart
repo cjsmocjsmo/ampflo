@@ -2,27 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class ArtistScreen extends StatelessWidget {
+class SongsForAlbumScreen extends StatelessWidget {
 
-  final String apiUrl = "http://192.168.0.91:9090/InitArtistInfo";
+  Future<List<dynamic>> fetchSongs(apiUrl) async {
 
-  Future<List<dynamic>> fetchArtists() async {
-    var result;
-    try {
-      var result = await http.get(Uri.parse(apiUrl));
-      return json.decode(result.body);
-    } catch (e) {
-      print("OOOOOh Fuck");
-    }
-    return result;
+    var result = await http.get(Uri.parse(apiUrl));
+    print(json.decode(result.body));
+    return json.decode(result.body);
+    
   }
 
   @override
   Widget build(BuildContext context) {
+    final albumID = ModalRoute.of(context)?.settings.arguments;
+    final String apiUrl = "http://192.168.0.91:9090/SongsForAlbum?selected=$albumID";
+
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Artists"),
+          title: Text("Songs"),
         ),
         drawer: Theme(
           data: Theme.of(context).copyWith(
@@ -39,7 +37,7 @@ class ArtistScreen extends StatelessWidget {
           child: Center(
             child:
               FutureBuilder<List<dynamic>>(
-                future: fetchArtists(),
+                future: fetchSongs(apiUrl),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -56,7 +54,7 @@ class ArtistScreen extends StatelessWidget {
                             // Navigator.pop(context);
                             // Navigator.of(context).pop();
                             // Navigator.pushNamed(context, '/AlbumsForArtist');
-                            Navigator.of(context).pushNamed('/AlbumsForArtist', arguments: snapshot.data[index]["artistID"]);
+                            Navigator.of(context).pushNamed('/Player', arguments: snapshot.data[index]["fileID"]);
                           },
                           child: 
                           Container(
@@ -64,7 +62,7 @@ class ArtistScreen extends StatelessWidget {
                             color: Colors.purpleAccent[200],
                             child:Center(
                               child: Text(
-                                '${snapshot.data[index]['artist']}',
+                                '${snapshot.data[index]['title']}',
                                 style: TextStyle(fontSize: 26, color: Colors.black),
                               ),
                             ),
@@ -78,7 +76,6 @@ class ArtistScreen extends StatelessWidget {
                 }
               ),
           )
-        
         ),
       ),
     );

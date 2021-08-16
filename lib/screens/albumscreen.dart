@@ -25,7 +25,13 @@ class AlbumScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Albums"),
         ),
-        drawer: MyDrawer(),
+        drawer: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.purple, //desired color
+          ),
+          child: MyDrawer(),
+        ),
+        // drawer: MyDrawer(),
         body: Container(
           decoration: BoxDecoration(
             // color: Colors.lightGreenAccent.shade400,

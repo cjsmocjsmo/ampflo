@@ -12,10 +12,17 @@ class PlayListScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      drawer: MyDrawer(),
+      
+        drawer: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.purple, //desired color
+          ),
+          child: MyDrawer(),
+        ),
+      // drawer: MyDrawer(),
       body: Container(
       decoration: BoxDecoration(
-        color: Colors.lightGreenAccent.shade400,
+        color: Colors.purpleAccent.shade400,
       ),
       child: Column(
         children: <Widget>[
@@ -38,6 +45,7 @@ class PlayListScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text(
+                    
                     "ZZ Top",
                     style: TextStyle(
                       fontSize: 14,
@@ -103,8 +111,8 @@ Widget buttonSection = Container(
   child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      _buildButtonColumn(Icons.add_sharp, "ADD PLAYLIST"),
-      _buildButtonColumn(Icons.add_sharp, 'ADD RANDOM PLAYLIST'),
+      _buildButtonColumn(Icons.add_sharp, "ADD"),
+      _buildButtonColumn(Icons.add_sharp, 'ADD RANDOM'),
       // _buildButtonColumn(Icons.stop_sharp, 'STOP'),
       // _buildButtonColumn(Icons.skip_next_sharp, 'NEXT'),
     ],

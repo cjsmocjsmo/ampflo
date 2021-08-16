@@ -5,6 +5,7 @@ import 'screens/albumsforartist.dart';
 import 'screens/albumscreen.dart';
 import 'screens/playerscreen.dart';
 import 'screens/playlistsscreen.dart';
+import 'screens/songsforalbumscreen.dart';
 
 // import "screens/albumscreen.dart";
 // import "screens/playlistscreen.dart";
@@ -21,6 +22,7 @@ class AmpFlo extends StatelessWidget {
       '/': (context) => IntroScreen(),
       '/Artists': (context) => ArtistScreen(),
       '/AlbumsForArtist': (context) => AlbumForArtistScreen(),
+      '/SongsForAlbum': (context) => SongsForAlbumScreen(),
       '/Albums': (context) => AlbumScreen(),
       '/PlayLists': (context) => PlayListScreen(),
       '/Player': (context) => PlayerScreen(),

@@ -4,6 +4,9 @@ import 'artistscreen.dart';
 class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final songID = ModalRoute.of(context)?.settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.lightGreen.shade900,
@@ -12,10 +15,16 @@ class PlayerScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      drawer: MyDrawer(),
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.purple, //desired color
+        ),
+        child: MyDrawer(),
+      ),
+      // drawer: MyDrawer(),
       body: Container(
       decoration: BoxDecoration(
-        color: Colors.lightGreenAccent.shade400,
+        color: Colors.purpleAccent.shade400,
       ),
       child: Column(
         children: <Widget>[
