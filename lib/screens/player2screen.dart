@@ -19,6 +19,12 @@ class Player2Screen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Audio Service Demo'),
       ),
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.purple, //desired color
+        ),
+        child: MyDrawer(),
+      ),
       body: Center(
         child: StreamBuilder<bool>(
           stream: AudioService.runningStream,
