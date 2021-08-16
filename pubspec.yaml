@@ -25,6 +25,13 @@ dependencies:
     sdk: flutter
   http:
   lazy_load_scrollview: 1.3.0
+  # path_provider: ^2.0.1
+  # audio_session: ^0.1.2
+  # just_audio: ^0.7.5
+  # flutter_tts: ^3.0.0
+  # rxdart: ^0.27.0
+  # audio_service:
+    # path: ../
 
 
   # The following adds the Cupertino Icons font to your application.
