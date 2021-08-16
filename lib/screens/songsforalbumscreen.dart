@@ -54,7 +54,7 @@ class SongsForAlbumScreen extends StatelessWidget {
                             // Navigator.pop(context);
                             // Navigator.of(context).pop();
                             // Navigator.pushNamed(context, '/AlbumsForArtist');
-                            Navigator.of(context).pushNamed('/Player', arguments: snapshot.data[index]["fileID"]);
+                            Navigator.of(context).pushNamed('/Player2', arguments: snapshot.data[index]["fileID"]);
                           },
                           child: 
                           Container(
