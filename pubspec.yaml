@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   http:
-  audio_service: ^0.17.0
+  audio_service: ^0.17.1
   audio_session: ^0.1.2
   just_audio: ^0.7.5
   
