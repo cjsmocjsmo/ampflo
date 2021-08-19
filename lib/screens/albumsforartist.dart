@@ -7,6 +7,7 @@ class AlbumForArtistScreen extends StatelessWidget {
 
   Future<List<dynamic>> fetchAlbums(apiUrl) async {
     final result = await http.get(Uri.parse(apiUrl));
+    // print(json.decode(result.body));
     return json.decode(result.body);
   }
 
@@ -14,6 +15,7 @@ class AlbumForArtistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final artistID = ModalRoute.of(context)?.settings.arguments;
     final String apiUrl = "http://192.168.0.91:9090/AlbumsForArtist?selected=$artistID";
+    print(apiUrl);
 
     return Center(
       child: Scaffold(
@@ -37,7 +39,12 @@ class AlbumForArtistScreen extends StatelessWidget {
               FutureBuilder<List<dynamic>>(
                 future: fetchAlbums(apiUrl),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  
                   if (snapshot.hasData) {
+                    print(snapshot.data);
+                    print(snapshot.data[0]["numsongs"]);
+                    print(snapshot.data[0]["picHttpAddr"]);
+                    print(snapshot.data.length);
                     return ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemCount: snapshot.data.length,
@@ -56,21 +63,11 @@ class AlbumForArtistScreen extends StatelessWidget {
                             child: ListTile(
                               leading: Image.network(snapshot.data[index]["picHttpAddr"]),
                               title: Text(snapshot.data[index]["album"]),
+                              subtitle: Text('${snapshot.data[index]['numsongs']} songs'),
+                              trailing: Icon(Icons.chevron_right),
+                              tileColor: Colors.yellowAccent[200],
                             ),
                           ),
-
-
-                          // Container(
-                          //   height: 75,
-                          //   color: Colors.purpleAccent[200],
-                          //   child:Center(
-                          //     child: Text(
-                          //       '${snapshot.data[index]['Album']}',
-                          //       style: TextStyle(fontSize: 26, color: Colors.black),
-                          //     ),
-                          //   ),
-                          // ),
-
                         );
                       });
                   } else {

@@ -10,6 +10,7 @@ class ArtistScreen extends StatelessWidget {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
+      // print(json.decode(result.body));
       return json.decode(result.body);
     } catch (e) {
       print("OOOOOh Fuck");
@@ -58,17 +59,32 @@ class ArtistScreen extends StatelessWidget {
                             // Navigator.pushNamed(context, '/AlbumsForArtist');
                             Navigator.of(context).pushNamed('/AlbumsForArtist', arguments: snapshot.data[index]["artistID"]);
                           },
-                          child: 
-                          Container(
-                            height: 75,
-                            color: Colors.purpleAccent[200],
-                            child:Center(
-                              child: Text(
-                                '${snapshot.data[index]['artist']}',
-                                style: TextStyle(fontSize: 26, color: Colors.black),
-                              ),
+                          child:
+                          // Card(
+                          //   child: ListTile(
+                          //     title: Text('${snapshot.data[index]['artist']}'),
+                          //     trailing: Icon(Icons.chevron_right),
+                          //   ),
+                          // ),
+                          Card(
+                            child: ListTile(
+                              // leading: FlutterLogo(size: 56.0),
+                              title: Text('${snapshot.data[index]['artist']}'),
+                              subtitle: Text('${snapshot.data[index]['albcount']} albums'),
+                              trailing: Icon(Icons.chevron_right),
+                              tileColor: Colors.yellowAccent[200],
                             ),
                           ),
+                          // Container(
+                          //   height: 75,
+                          //   color: Colors.purpleAccent[200],
+                          //   child:Center(
+                          //     child: Text(
+                          //       '${snapshot.data[index]['artist']}',
+                          //       style: TextStyle(fontSize: 26, color: Colors.black),
+                          //     ),
+                          //   ),
+                          // ),
                         );
                       });
                   } else {
@@ -124,7 +140,7 @@ class MyDrawer extends StatelessWidget {
           tileColor: Colors.brown,
           onTap: () {
             Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/Player');
+            Navigator.pushNamed(context, '/Player2');
           },
         ),
          ListTile(
