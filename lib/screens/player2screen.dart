@@ -54,10 +54,7 @@ class Player2Screen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (queue.isNotEmpty)
-                            FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image: mediaItem!.artUri.toString(),
-                            ),
+                            if (mediaItem?.artUri != null) FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: mediaItem!.artUri.toString()),
                             // Image.network(mediaItem!.artUri.toString()),
                             if (mediaItem?.title != null) Text(mediaItem!.title),
                             if (mediaItem?.album != null) Text(mediaItem!.album),
