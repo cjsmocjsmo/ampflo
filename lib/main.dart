@@ -9,6 +9,8 @@ import 'screens/songsforalbumscreen.dart';
 
 import 'screens/player2screen.dart';
 
+import 'screens/addrandomplaylistform.dart';
+
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
 
@@ -32,6 +34,7 @@ class AmpFlo extends StatelessWidget {
       '/PlayLists': (context) => PlayListScreen(),
       '/Player': (context) => PlayerScreen(),
       '/Player2': (context) => AudioServiceWidget(child: Player2Screen()),
+      '/AddRandomForm': (context) => AddRandomForm(),
  
     },
     debugShowCheckedModeBanner: false,

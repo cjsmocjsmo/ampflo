@@ -9,7 +9,6 @@ class SongsForAlbumScreen extends StatelessWidget {
   Future<List<dynamic>> fetchSongs(apiUrl) async {
 
     var result = await http.get(Uri.parse(apiUrl));
-    print(json.decode(result.body));
     return json.decode(result.body);
     
   }
@@ -36,9 +35,6 @@ class SongsForAlbumScreen extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) => _buildPopupDialog(context),
                 );
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   const SnackBar(content: Text('This is a snackbar'))
-                // );
               },
             ),
           ],
@@ -49,11 +45,8 @@ class SongsForAlbumScreen extends StatelessWidget {
           ),
           child: MyDrawer(),
         ),
-        
-        // drawer: MyDrawer(),
         body: Container(
           decoration: BoxDecoration(
-            // color: Colors.lightGreenAccent.shade400,
             color: Colors.purpleAccent.shade400,
         ),
           child: Center(
@@ -154,7 +147,7 @@ class MyDrawer extends StatelessWidget {
           tileColor: Colors.brown,
           onTap: () {
             Navigator.of(context).pop();
-            Navigator.pushNamed(context, '/Player');
+            Navigator.pushNamed(context, '/Player2');
           },
         ),
          ListTile(
@@ -180,9 +173,9 @@ Widget _buildPopupDialog(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         //This needs to be a radio button list or check box list of playlists
-        Text("Playlist One"),
-        Text("Playlist Two"),
-        Text("Playlist Three"),
+        Text("Playlist One", style: TextStyle(fontSize: 18)),
+        Text("Playlist Two", style: TextStyle(fontSize: 18)),
+        Text("Playlist Three", style: TextStyle(fontSize: 18)),
       ],
     ),
     actions: <Widget>[

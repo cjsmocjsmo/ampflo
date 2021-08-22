@@ -11,6 +11,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:transparent_image/transparent_image.dart';
+import 'songsforalbumscreen.dart';
 
 class Player2Screen extends StatelessWidget { 
 
@@ -19,9 +20,19 @@ class Player2Screen extends StatelessWidget {
     final fileID = ModalRoute.of(context)?.settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Audio Service Demo'),
+        title: const Text('Player'),
       ),
-      body: Center(
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.purple, //desired color
+        ),
+        child: MyDrawer(),
+      ),
+      body: Container(
+          decoration: BoxDecoration(
+            color: Colors.purpleAccent.shade400,
+        ),
+        child: Center(
         child: StreamBuilder<bool>(
           stream: AudioService.runningStream,
           builder: (context, snapshot) {
@@ -29,7 +40,8 @@ class Player2Screen extends StatelessWidget {
               // Don't show anything until we've ascertained whether or not the
               // service is running, since we want to show a different UI in
               // each case.
-              return SizedBox();
+              // return SizedBox();
+              return CircularProgressIndicator();
             }
             final running = snapshot.data ?? false;
             return Column(
@@ -39,10 +51,11 @@ class Player2Screen extends StatelessWidget {
                 if (!running) ...[
                   
                   // UI to show when we're not running, i.e. a menu.
-                  audioPlayerButton(),
+                  // audioPlayerButton(),
+                  myStartAudio(),
                 ] else ...[
                   // UI to show when we're running, i.e. player state/controls.
-
+                  
                   // Queue display/controls.
                   StreamBuilder<QueueState>(
                     stream: _queueStateStream,
@@ -54,10 +67,7 @@ class Player2Screen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (queue.isNotEmpty)
-                            if (mediaItem?.artUri != null) FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: mediaItem!.artUri.toString()),
-                            // Image.network(mediaItem!.artUri.toString()),
-                            if (mediaItem?.title != null) Text(mediaItem!.title),
-                            if (mediaItem?.album != null) Text(mediaItem!.album),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -69,23 +79,23 @@ class Player2Screen extends StatelessWidget {
                                       ? null
                                       : AudioService.skipToPrevious,
                                 ),
-                                StreamBuilder<bool>(
-                                  stream: AudioService.playbackStateStream
-                                      .map((state) => state.playing)
-                                      .distinct(),
-                                  builder: (context, snapshot) {
-                                    final playing = snapshot.data ?? false;
-                                    return Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        if (playing) pauseButton() else playButton(),
-                                        // stopButton(),
+                                // StreamBuilder<bool>(
+                                //   stream: AudioService.playbackStateStream
+                                //       .map((state) => state.playing)
+                                //       .distinct(),
+                                //   builder: (context, snapshot) {
+                                //     final playing = snapshot.data ?? false;
+                                //     return Row(
+                                //       mainAxisAlignment: MainAxisAlignment.center,
+                                //       children: [
+                                //         if (playing) pauseButton() else playButton(),
+                                //         // stopButton(),
                                         
-                                      ],
-                                    );
-                                  },
-                                ),
-                                stopButton(),
+                                //       ],
+                                //     );
+                                //   },
+                                // ),
+                                
                                 IconButton(
                                   icon: Icon(Icons.skip_next),
                                   iconSize: 32.0,
@@ -93,95 +103,53 @@ class Player2Screen extends StatelessWidget {
                                       ? null
                                       : AudioService.skipToNext,
                                 ),
-                                StreamBuilder<MediaState>(
-                                  stream: _mediaStateStream,
-                                  builder: (context, snapshot) {
-                                    final mediaState = snapshot.data;
-                                    return SeekBar(
-                                      duration:
-                                          mediaState?.mediaItem?.duration ?? Duration.zero,
-                                      position: mediaState?.position ?? Duration.zero,
-                                      onChangeEnd: (newPosition) {
-                                        AudioService.seekTo(newPosition);
-                                      },
-                                    );
-                                  },
-                                ),
                               ],
                             ),
-                          // if (mediaItem?.title != null) Text(mediaItem!.title),
-                          // if (mediaItem?.album != null) Text(mediaItem!.album),
-                          // Image.network(mediaItem!.artUri.toString()),
+                            if (mediaItem?.title != null) Text(mediaItem!.title, style: TextStyle(fontSize: 25)),
+                            if (mediaItem?.artUri != null) FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: mediaItem!.artUri.toString()),
+                            if (mediaItem?.album != null) Text(mediaItem!.album, style: TextStyle(fontSize: 20)),
+                            if (mediaItem?.artist != null) Text(mediaItem!.artist.toString(), style: TextStyle(fontSize: 20)),
+                            // if (mediaItem?.artist != null) Text(mediaItem?.artist, style: TextStyle(fontSize: 15)),
                         ],
                       );
                     },
                   ),
-                  // Play/pause/stop buttons.
-                  // StreamBuilder<bool>(
-                  //   stream: AudioService.playbackStateStream
-                  //       .map((state) => state.playing)
-                  //       .distinct(),
-                  //   builder: (context, snapshot) {
-                  //     final playing = snapshot.data ?? false;
-                  //     return Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         if (playing) pauseButton() else playButton(),
-                  //         // stopButton(),
-                          
-                  //       ],
-                  //     );
-                  //   },
-                  // ),
+                  StreamBuilder<bool>(
+                    stream: AudioService.playbackStateStream
+                      .map((state) => state.playing)
+                      .distinct(),
+                    builder: (context, snapshot) {
+                      final playing = snapshot.data ?? false;
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (playing) pauseButton() else playButton(),
+                          stopButton(),
+                        ],
+                      );
+                    },
+                  ),
                   // A seek bar.
-                  // StreamBuilder<MediaState>(
-                  //   stream: _mediaStateStream,
-                  //   builder: (context, snapshot) {
-                  //     final mediaState = snapshot.data;
-                  //     return SeekBar(
-                  //       duration:
-                  //           mediaState?.mediaItem?.duration ?? Duration.zero,
-                  //       position: mediaState?.position ?? Duration.zero,
-                  //       onChangeEnd: (newPosition) {
-                  //         AudioService.seekTo(newPosition);
-                  //       },
-                  //     );
-                  //   },
-                  // ),
-                  // Image.network(mediaItem!.artUri.toString()),
-                  // // Display the processing state.
-                  // StreamBuilder<AudioProcessingState>(
-                  //   stream: AudioService.playbackStateStream
-                  //       .map((state) => state.processingState)
-                  //       .distinct(),
-                  //   builder: (context, snapshot) {
-                  //     final processingState =
-                  //         snapshot.data ?? AudioProcessingState.none;
-                  //     return Text(
-                  //         "Processing state: ${describeEnum(processingState)}");
-                  //   },
-                  // ),
-                  // Display the latest custom event.
-                  // StreamBuilder(
-                  //   stream: AudioService.customEventStream,
-                  //   builder: (context, snapshot) {
-                  //     return Text("custom event: ${snapshot.data}");
-                  //   },
-                  // ),
-                  // Display the notification click status.
-                  // StreamBuilder<bool>(
-                  //   stream: AudioService.notificationClickEventStream,
-                  //   builder: (context, snapshot) {
-                  //     return Text(
-                  //       'Notification Click Status: ${snapshot.data}',
-                  //     );
-                  //   },
-                  // ),
+                  StreamBuilder<MediaState>(
+                    stream: _mediaStateStream,
+                    builder: (context, snapshot) {
+                      final mediaState = snapshot.data;
+                      return SeekBar(
+                        duration:
+                            mediaState?.mediaItem?.duration ?? Duration.zero,
+                        position: mediaState?.position ?? Duration.zero,
+                        onChangeEnd: (newPosition) {
+                          AudioService.seekTo(newPosition);
+                        },
+                      );
+                    },
+                  ),
                 ],
               ],
             );
           },
         ),
+      ),
       ),
     );
   }
@@ -202,28 +170,29 @@ class Player2Screen extends StatelessWidget {
           AudioService.currentMediaItemStream,
           (queue, mediaItem) => QueueState(queue, mediaItem));
 
-  ElevatedButton audioPlayerButton() => startButton(
-        'AudioPlayer',
-        () {
-          AudioService.start(
-            backgroundTaskEntrypoint: _audioPlayerTaskEntrypoint,
-            androidNotificationChannelName: 'Audio Service Demo',
-            // Enable this if you want the Android service to exit the foreground state on pause.
-            //androidStopForegroundOnPause: true,
-            androidNotificationColor: 0xFF2196f3,
-            androidNotificationIcon: 'mipmap/ic_launcher',
-            androidEnableQueue: true,
-          );
-        },
-      );
+  myStartAudio() => AudioService.start(
+    backgroundTaskEntrypoint: _audioPlayerTaskEntrypoint,
+    androidNotificationChannelName: 'Audio Service Demo',
+    // Enable this if you want the Android service to exit the foreground state on pause.
+    //androidStopForegroundOnPause: true,
+    androidNotificationColor: 0xFF2196f3,
+    androidNotificationIcon: 'mipmap/ic_launcher',
+    androidEnableQueue: true,
+  );
 
-  
-
-  ElevatedButton startButton(String label, VoidCallback onPressed) =>
-      ElevatedButton(
-        child: Text(label),
-        onPressed: onPressed,
-      );
+  // ElevatedButton audioPlayerButton() => ElevatedButton(
+  //   child: Text('AudioPlayer'),
+  //   onPressed: () { AudioService.start(
+  //           backgroundTaskEntrypoint: _audioPlayerTaskEntrypoint,
+  //           androidNotificationChannelName: 'Audio Service Demo',
+  //           // Enable this if you want the Android service to exit the foreground state on pause.
+  //           //androidStopForegroundOnPause: true,
+  //           androidNotificationColor: 0xFF2196f3,
+  //           androidNotificationIcon: 'mipmap/ic_launcher',
+  //           androidEnableQueue: true,
+  //         );
+  //       },
+  //     );
 
   IconButton playButton() => IconButton(
         icon: Icon(Icons.play_arrow),
@@ -350,7 +319,7 @@ class AudioPlayerTask extends BackgroundAudioTask {
     // You can also put this in your app's initialisation if your app doesn't
     // switch between two types of audio as this example does.
     final session = await AudioSession.instance;
-    await session.configure(AudioSessionConfiguration.speech());
+    // await session.configure(AudioSessionConfiguration.speech());
     // Broadcast media item changes.
     _player.currentIndexStream.listen((index) {
       if (index != null) AudioServiceBackground.setMediaItem(queue[index]);
@@ -442,7 +411,7 @@ class AudioPlayerTask extends BackgroundAudioTask {
     // the message gets sent to the UI.
     await _broadcastState();
     // Shut down this task
-    await super.onStop();
+    // await super.onStop();
   }
 
   /// Jumps away from the current position by [offset].
@@ -529,9 +498,9 @@ class MediaLibrary {
     MediaItem(
       // id: "https://s3.amazonaws.com/scifri-segments/scifri201711241.mp3",
       id: "http://192.168.0.91:9090/fsData/v/van_hale/van_hale/11___van.mp3",
-      album: "Science Friday",
-      title: "From Cat Rheology To Operatic Incompetence",
-      artist: "Science Friday and WNYC Studios",
+      album: "5150",
+      title: "The I Forget Song",
+      artist: "Van Halen",
       duration: Duration(milliseconds: 2856950),
       artUri: Uri.parse(
           "http://192.168.0.91:9090/static/Van_Halen_-_Van_Halen_thumb.jpg"
