@@ -112,7 +112,7 @@ class _MyCustomFormState extends State<IntroScreen> {
 }
 
 List<String> images = [
-  "images/Van_Halen_-_1984_thumb.jpg",
+  
   "images/Van_Halen_-_5150_thumb.jpg",
   "images/Van_Halen_-_Balance_thumb.jpg",
   "images/Van_Halen_-_Diver_Down_thumb.jpg",
@@ -123,6 +123,8 @@ List<String> images = [
   "images/ZZ_Top_-_Afterburner_thumb.jpg",
   "images/ZZ_Top_-_Antenna_thumb.jpg",
   "images/ZZ_Top_-_Deguello_thumb.jpg",
+  "images/ZZ_Top_-_Tres_Hombres_thumb.jpg",
+  "images/ZZ_Top_-_XXX_thumb.jpg",
 ];
 
 
@@ -130,18 +132,20 @@ class _MyIntroPage extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: images.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Image.asset(images[index], fit: BoxFit.cover);
-      },
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10
+    return Expanded(
+      child: GridView.builder(
+        itemCount: images.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Image.asset(images[index], fit: BoxFit.cover);
+        },
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10
+        ),
+        padding: EdgeInsets.all(10),
+        shrinkWrap: true,
       ),
-      padding: EdgeInsets.all(10),
-      shrinkWrap: true,
     );
   }
 }
