@@ -15,7 +15,7 @@ class AlbumForArtistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final artistID = ModalRoute.of(context)?.settings.arguments;
     final String apiUrl = "http://192.168.0.91:9090/AlbumsForArtist?selected=$artistID";
-    print(apiUrl);
+    // print(apiUrl);
 
     return Center(
       child: Scaffold(
@@ -41,10 +41,10 @@ class AlbumForArtistScreen extends StatelessWidget {
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   
                   if (snapshot.hasData) {
-                    print(snapshot.data);
-                    print(snapshot.data[0]["numsongs"]);
-                    print(snapshot.data[0]["picHttpAddr"]);
-                    print(snapshot.data.length);
+                    // print(snapshot.data);
+                    // print(snapshot.data[0]["numsongs"]);
+                    // print(snapshot.data[0]["picHttpAddr"]);
+                    // print(snapshot.data.length);
                     return ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemCount: snapshot.data.length,

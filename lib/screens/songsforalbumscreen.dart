@@ -13,6 +13,15 @@ class SongsForAlbumScreen extends StatelessWidget {
     
   }
 
+  // Future<List<dynamic>> fetchDBS() async {
+  //   final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
+
+  //   var result = await http.get(Uri.parse(apiUrl));
+  //   print(json.decode(result.body));
+  //   return json.decode(result.body);
+    
+  // }
+
   @override
   Widget build(BuildContext context) {
     final albumID = ModalRoute.of(context)?.settings.arguments;
@@ -31,6 +40,7 @@ class SongsForAlbumScreen extends StatelessWidget {
               icon: const Icon(Icons.playlist_add, size: 34.0),
               tooltip: 'Choose PlayList To Add Songs To',
               onPressed: () {
+                var dbs = fetchDBS();
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => _buildPopupDialog(context),
@@ -39,6 +49,8 @@ class SongsForAlbumScreen extends StatelessWidget {
             ),
           ],
         ),
+
+
         drawer: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: Colors.purple, //desired color
@@ -164,18 +176,51 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
+Future<List<dynamic>> fetchDBS() async {
+    final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
 
+    var result = await http.get(Uri.parse(apiUrl));
+    print(json.decode(result.body));
+    return json.decode(result.body);
+    
+  }
 Widget _buildPopupDialog(BuildContext context) {
-  return new AlertDialog(
+
+  
+
+  return AlertDialog(
     title: const Text('Select PlayList'),
     content: new Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        //This needs to be a radio button list or check box list of playlists
-        Text("Playlist One", style: TextStyle(fontSize: 18)),
-        Text("Playlist Two", style: TextStyle(fontSize: 18)),
-        Text("Playlist Three", style: TextStyle(fontSize: 18)),
+        FutureBuilder<List<dynamic>>(
+          future: fetchDBS(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            print(snapshot.data[0]["PlayListName"]);
+            if (snapshot.hasData) {
+              print(snapshot.data[0]["PlayListName"]);
+              return ListView.builder(
+                padding: const EdgeInsets.all(2),
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                
+                return 
+                // Text(snapshot.data[index]["PlayListName"]);
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
+                    onPressed: () {
+                      //add local storage as current playlist
+                    },
+                    child: Text(snapshot.data["playlistname"]),
+                  );
+                },
+              );
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+        ),
       ],
     ),
     actions: <Widget>[
@@ -190,3 +235,10 @@ Widget _buildPopupDialog(BuildContext context) {
     ],
   );
 }
+
+
+
+        // //This needs to be a radio button list or check box list of playlists
+        // Text("Playlist One", style: TextStyle(fontSize: 18)),
+        // Text("Playlist Two", style: TextStyle(fontSize: 18)),
+        // Text("Playlist Three", style: TextStyle(fontSize: 18)),

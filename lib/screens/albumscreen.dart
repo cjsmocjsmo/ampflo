@@ -49,7 +49,7 @@ class AlbumScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            print(snapshot.data[index]["albumID"]);
+                            // print(snapshot.data[index]["albumID"]);
                             // String dirp = "/media/pi/PiTB/media/TVShows";
                             // String ap = dirp + snapshot.data[index]["tvfspath"];
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;

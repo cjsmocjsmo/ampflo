@@ -70,8 +70,6 @@ class _AddRandomFormState extends State<AddRandomForm> {
     }
     sc = myController.text;
   }
-  
-
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +123,8 @@ class _AddRandomFormState extends State<AddRandomForm> {
               ),
               onPressed: () {
                 if (playlistname != false && songcount != false) {
-                  print(pln);
-                  print(sc);
+                  // print(pln);
+                  // print(sc);
                   Navigator.of(context).pop();
                 }
                 

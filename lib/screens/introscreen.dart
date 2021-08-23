@@ -41,7 +41,6 @@ class _MyCustomFormState extends State<IntroScreen> {
   Future<List<dynamic>> fetchRandPics() async {
     final String apiUrl = "http://192.168.0.91:9090/RandomPics";
     final result = await http.get(Uri.parse(apiUrl));
-    print(json.decode(result.body));
     return json.decode(result.body);
   }
 
@@ -95,8 +94,8 @@ class _MyCustomFormState extends State<IntroScreen> {
               ),
               onPressed: () {
                 if (uname != false && pword != false) {
-                  print(username);
-                  print(password);
+                  // print(username);
+                  // print(password);
                   Navigator.of(context).pop();
                   Navigator.pushNamed(
                     context,
@@ -109,7 +108,6 @@ class _MyCustomFormState extends State<IntroScreen> {
             FutureBuilder<List<dynamic>>(
             future: fetchRandPics(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              print(snapshot.data);
               if (snapshot.hasData) {
                   return Expanded(
                     child: GridView.builder(
