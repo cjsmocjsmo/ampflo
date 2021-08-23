@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'artistscreen.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -34,21 +37,26 @@ class _MyCustomFormState extends State<IntroScreen> {
 
   var username = "None";
   var password = "None";
-
+  
+  Future<List<dynamic>> fetchRandPics() async {
+    final String apiUrl = "http://192.168.0.91:9090/RandomPics";
+    final result = await http.get(Uri.parse(apiUrl));
+    print(json.decode(result.body));
+    return json.decode(result.body);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('AmpFlo'),
-      ),
-      drawer: MyDrawer(),
+      // appBar: AppBar(
+      //   title: Text('AmpFlo'),
+      // ),
       body: Container(
         decoration: BoxDecoration(
-          // color: Colors.lightGreenAccent.shade400,
           color: Colors.purpleAccent[200],
         ),
-        child: Padding(
+        child: 
+        Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
@@ -79,7 +87,6 @@ class _MyCustomFormState extends State<IntroScreen> {
                 ),
                 controller: myController,
               ),
-              //button goes here
               const SizedBox(height: 30),
             TextButton(
               style: TextButton.styleFrom(
@@ -96,92 +103,42 @@ class _MyCustomFormState extends State<IntroScreen> {
                     '/Artists'
                   );
                 }
-                
               },
               child: const Text('AMPFLO'),
             ),
-           _MyIntroPage(),
+            FutureBuilder<List<dynamic>>(
+            future: fetchRandPics(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              print(snapshot.data);
+              if (snapshot.hasData) {
+                  return Expanded(
+                    child: GridView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: snapshot.data[index],
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10
+                      ),
+                      padding: EdgeInsets.all(10),
+                      shrinkWrap: true,
+                    ),
+                  );
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
             ],
-             
           ),
-        ),
-        
+        ),       
       ),
     );
   }
 }
-
-List<String> images = [
-  
-  "images/Van_Halen_-_5150_thumb.jpg",
-  "images/Van_Halen_-_Balance_thumb.jpg",
-  "images/Van_Halen_-_Diver_Down_thumb.jpg",
-  "images/Van_Halen_-_Fair_Warning_thumb.jpg",
-  "images/Weezer_-_The_Green_Album_thumb.jpg",
-  "images/Whitesnake_-_Good_To_Be_Bad_thumb.jpg",
-  "images/Zakk_Wylde_-_Pride_And_Glory_thumb.jpg",
-  "images/ZZ_Top_-_Afterburner_thumb.jpg",
-  "images/ZZ_Top_-_Antenna_thumb.jpg",
-  "images/ZZ_Top_-_Deguello_thumb.jpg",
-  "images/ZZ_Top_-_Tres_Hombres_thumb.jpg",
-  "images/ZZ_Top_-_XXX_thumb.jpg",
-];
-
-
-class _MyIntroPage extends StatelessWidget {
- 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        itemCount: images.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Image.asset(images[index], fit: BoxFit.cover);
-        },
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10
-        ),
-        padding: EdgeInsets.all(10),
-        shrinkWrap: true,
-      ),
-    );
-  }
-}
-
-//  Van_Halen_-_1984_thumb.jpg
-//  Van_Halen_-_5150_thumb.jpg
-//  Van_Halen_-_Balance_thumb.jpg
-//  Van_Halen_-_Diver_Down_thumb.jpg
-//  Van_Halen_-_Fair_Warning_thumb.jpg
-//  Van_Halen_-_For_Unlawful_Carnal_Knowledge_thumb.jpg
-//  Van_Halen_-_Live_Right_Here_Right_Now_Disc_1_thumb.jpg
-//  Van_Halen_-_Live_Right_Here_Right_Now_Disc_2_thumb.jpg
-//  Van_Halen_-_OU812_thumb.jpg
-//  Van_Halen_-_The_Best_of_Both_Worlds_Disc_1_thumb.jpg
-//  Van_Halen_-_The_Best_of_Both_Worlds_Disc_2_thumb.jpg
-//  Van_Halen_-_The_Best_Of_Van_Halen,_Vol.1_thumb.jpg
-//  Van_Halen_-_Van_Halen_III_thumb.jpg
-//  Van_Halen_-_Van_Halen_II_thumb.jpg
-//  Van_Halen_-_Van_Halen_thumb.jpg
-//  Van_Halen_-_Women_and_Children_First_thumb.jpg
-//  Van_Halen_-_Women_And_Children_First_thumb.jpg
-//  Velvet_Revolver_-_Contraband_thumb.jpg
-//  Velvet_Revolver_-_Libertad_thumb.jpg
-//  Weezer_-_The_Green_Album_thumb.jpg
-//  Whitesnake_-_Good_To_Be_Bad_thumb.jpg
-//  Zakk_Wylde_-_Pride_And_Glory_thumb.jpg
-//  ZZ_Top_-_Afterburner_thumb.jpg
-//  ZZ_Top_-_Antenna_thumb.jpg
-//  ZZ_Top_-_Deguello_thumb.jpg
-//  ZZ_Top_-_El_Loco_thumb.jpg
-//  ZZ_Top_-_Fandango_thumb.jpg
-//  ZZ_Top_-_Mescalero_thumb.jpg
-//  ZZ_Top_-_Recycler_thumb.jpg
-//  ZZ_Top_-_Rhythmeen_thumb.jpg
-//  ZZ_Top_-_Rio_Grande_Mud_thumb.jpg
-//  ZZ_Top_-_Tejas_thumb.jpg
-//  ZZ_Top_-_Tres_Hombres_thumb.jpg
-//  ZZ_Top_-_XXX_thumb.jpg
-//  ZZ_Top_-_Zz_Top's_First_Album_thumb.jpg
