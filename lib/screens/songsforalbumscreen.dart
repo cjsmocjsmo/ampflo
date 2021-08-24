@@ -1,10 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 
+class SongsForAlbumScreen extends StatefulWidget {
+  @override
+  _SongsForAlbumScreenState createState() => _SongsForAlbumScreenState();
+}
 
+class _SongsForAlbumScreenState extends State<_SongsForAlbumScreenState> {
+  FToast fToast;
 
-class SongsForAlbumScreen extends StatelessWidget {
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  _showToast() {
+    Widget toast = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+        ),
+        child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+                Icon(Icons.check),
+                SizedBox(
+                width: 12.0,
+                ),
+                Text("This is a Custom Toast"),
+            ],
+        ),
+    );
+
+    fToast.showToast(
+        child: toast,
+        gravity: ToastGravity.BOTTOM,
+        toastDuration: Duration(seconds: 2),
+    );
+  }
+
+// class SongsForAlbumScreen extends StatelessWidget {
 
   Future<List<dynamic>> fetchSongs(apiUrl) async {
 
@@ -13,14 +53,15 @@ class SongsForAlbumScreen extends StatelessWidget {
     
   }
 
-  // Future<List<dynamic>> fetchDBS() async {
-  //   final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
+  Future<List<dynamic>> fetchDBS() async {
 
-  //   var result = await http.get(Uri.parse(apiUrl));
-  //   print(json.decode(result.body));
-  //   return json.decode(result.body);
-    
-  // }
+    final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
+
+    var result = await http.get(Uri.parse(apiUrl));
+    print(json.decode(result.body));
+    return json.decode(result.body);
+  
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +81,14 @@ class SongsForAlbumScreen extends StatelessWidget {
               icon: const Icon(Icons.playlist_add, size: 34.0),
               tooltip: 'Choose PlayList To Add Songs To',
               onPressed: () {
-                var dbs = fetchDBS();
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) => _buildPopupDialog(context),
-                );
+                _showToast();
+                // // var dbs = fetchDBS();
+                // showDialog(
+                //   context: context,
+                //   // builder: (BuildContext context) => _buildPopupDialog(context),
+                //   builder: _buildPopupDialog(),
+
+                // );
               },
             ),
           ],
@@ -176,69 +220,125 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
-Future<List<dynamic>> fetchDBS() async {
-    final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
 
-    var result = await http.get(Uri.parse(apiUrl));
-    print(json.decode(result.body));
-    return json.decode(result.body);
-    
-  }
-Widget _buildPopupDialog(BuildContext context) {
-
+// Future<List<dynamic>> fetchDBS() async {
+//   final String apiUrl = "http://192.168.0.91:9090/AllPlaylists";
+//   var result = await http.get(Uri.parse(apiUrl));
+//   print(json.decode(result.body));
+//   return json.decode(result.body);
   
+// }
 
-  return AlertDialog(
-    title: const Text('Select PlayList'),
-    content: new Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        FutureBuilder<List<dynamic>>(
-          future: fetchDBS(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            print(snapshot.data[0]["PlayListName"]);
-            if (snapshot.hasData) {
-              print(snapshot.data[0]["PlayListName"]);
-              return ListView.builder(
-                padding: const EdgeInsets.all(2),
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) {
+
+// class SongsForAlbumScreen extends StatefulWidget {
+//   @override
+//   _SongsForAlbumScreenState createState() => _SongsForAlbumScreenState();
+// }
+
+// class _SongsForAlbumScreenState extends State<_SongsForAlbumScreenState> {
+//   FToast fToast;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     fToast = FToast();
+//     fToast.init(context);
+//   }
+
+//   _showToast() {
+//     Widget toast = Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+//         decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(25.0),
+//         color: Colors.greenAccent,
+//         ),
+//         child: Row(
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//                 Icon(Icons.check),
+//                 SizedBox(
+//                 width: 12.0,
+//                 ),
+//                 Text("This is a Custom Toast"),
+//             ],
+//         ),
+//     );
+
+//     fToast.showToast(
+//         child: toast,
+//         gravity: ToastGravity.BOTTOM,
+//         toastDuration: Duration(seconds: 2),
+//     );
+//   }
+// }
+
+
+
+
+// // class MyPlayListDrawer extends StatelessWidget {
+// // // Widget _buildPopupDialog(BuildContext context) {
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return AlertDialog(
+// //       child: Container(
+// //         child: FutureBuilder<List<dynamic>>(
+// //           future: fetchDBS(),
+// //           builder: (BuildContext context, AsyncSnapshot snapshot) {
+// //               // print("this is playlistname");
+// //               // print(snapshot.data[0]["PlayListName"]);
+// //               if (snapshot.hasData) {
+// //                 print(snapshot.data[0]["PlayListName"]);
+// //                 print(snapshot.data.length);
+// //                 // return 
+// //                 Text(snapshot.data[0]["PlayListName"]);
+// //               } else {
+// //                 return CircularProgressIndicator();
+// //               }
+// //           },
+// //         ),
+// //       ),
+// //     );
+// //     actions: <Widget>[
+// //       new FlatButton(
+// //         onPressed: () {
+// //           //Make post request to server to add song to selected playlist
+// //           Navigator.of(context).pop();
+// //         },
+// //         textColor: Theme.of(context).primaryColor,
+// //         child: const Text('Close'),
+// //       ),
+// //     ];
+
+// //   }
+// // }
+
+//         // FutureBuilder<List<dynamic>>(
+//         //   future: fetchDBS(),
+//         //   builder: (BuildContext context, AsyncSnapshot snapshot) {
+//         //     print("this is playlistname");
+//         //     print(snapshot.data[0]["PlayListName"]);
+//         //     if (snapshot.hasData) {
+//         //       print(snapshot.data[0]["PlayListName"]);
+//         //       print(snapshot.data.length);
+//         //       return ListView.builder(
+//         //         padding: const EdgeInsets.all(2),
+//         //         itemCount: snapshot.data.length,
+//         //         itemBuilder: (BuildContext context, int index) {
                 
-                return 
-                // Text(snapshot.data[index]["PlayListName"]);
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
-                    onPressed: () {
-                      //add local storage as current playlist
-                    },
-                    child: Text(snapshot.data["playlistname"]),
-                  );
-                },
-              );
-            } else {
-              return CircularProgressIndicator();
-            }
-          },
-        ),
-      ],
-    ),
-    actions: <Widget>[
-      new FlatButton(
-        onPressed: () {
-          //Make post request to server to add song to selected playlist
-          Navigator.of(context).pop();
-        },
-        textColor: Theme.of(context).primaryColor,
-        child: const Text('Close'),
-      ),
-    ],
-  );
-}
-
-
-
-        // //This needs to be a radio button list or check box list of playlists
-        // Text("Playlist One", style: TextStyle(fontSize: 18)),
-        // Text("Playlist Two", style: TextStyle(fontSize: 18)),
-        // Text("Playlist Three", style: TextStyle(fontSize: 18)),
+//         //         return 
+//         //         // Text(snapshot.data[index]["PlayListName"]);
+//         //         ElevatedButton(
+//         //             style: ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 12)),
+//         //             onPressed: () {
+//         //               //add local storage as current playlist
+//         //             },
+//         //             child: Text(snapshot.data[index]["playlistname"]),
+//         //           );
+//         //         },
+//         //       );
+//         //     } else {
+//         //       return CircularProgressIndicator();
+//         //     }
+//         //   },
+//         // ),
