@@ -1,5 +1,5 @@
-class Songz {
-  const Songz ({
+class Songs {
+  const Songs ({
     this.dirpath,
     this.filename,
     this.extension,
@@ -39,8 +39,8 @@ class Songz {
   final String? idx;
   final String? httpaddr;
 
-  factory Songz.fromJson(Map<String, dynamic> json) {
-    return Songz(
+  factory Songs.fromJson(Map<String, dynamic> json) {
+    return Songs(
       dirpath: json["dirpath"] as String?,
       filename: json["filename"] as String?,
       extension: json['extension'] as String?,

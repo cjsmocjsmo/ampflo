@@ -42,7 +42,8 @@ class AlbumScreen extends StatelessWidget {
         ),
           child: Center(
             child:
-              FutureBuilder<List<dynamic>>(
+              // FutureBuilder<List<dynamic>>(
+              FutureBuilder<AlbumView>(
                 future: fetchAlbums(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
