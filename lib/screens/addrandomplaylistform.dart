@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'songsforalbumscreen.dart';
 
 
@@ -8,6 +10,20 @@ class AddRandomForm extends StatefulWidget {
 }
 
 class _AddRandomFormState extends State<AddRandomForm> {
+
+  Future<List<dynamic>> addRandomPlaylistToDB(apiUrl) async {
+
+    
+
+
+    var result = await http.get(Uri.parse(apiUrl));
+    return json.decode(result.body);
+    
+  }
+
+
+
+
 //   Future<RandomPlaylist> createRandomPlaylist(String name, String songcount) async {
 //     final http.Response response = await http.post(
 //       'http://192.168.0.91:9090/CreateRandomPlaylist',
@@ -123,8 +139,13 @@ class _AddRandomFormState extends State<AddRandomForm> {
               ),
               onPressed: () {
                 if (playlistname != false && songcount != false) {
-                  // print(pln);
-                  // print(sc);
+                  //add playlist to db
+                  print(pln);
+                  print(sc);
+                  final String apiUrl = "http://192.168.0.91:9090/AddPlaylist?name=$pln&songcount=$sc";
+                  addRandomPlaylistToDB(apiUrl);
+                  print(apiUrl);
+                  
                   Navigator.of(context).pop();
                 }
                 

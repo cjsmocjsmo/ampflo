@@ -36,25 +36,25 @@ class SongsForAlbumScreen extends StatelessWidget {
               future: fetchDBS(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
-                    print(snapshot.data[0]["PlayListName"]);
-                    print(snapshot.data.length);
-                    final snackBar = SnackBar(
-                      content: Text(snapshot.data[0]["PlayListName"], style: TextStyle(fontSize: 25)),
-                      action: SnackBarAction(
-                        label: 'Undo',
-                        onPressed: () {
-                              // Some code to undo the change.
-                        },
-                      ),
-                    );
-                    return 
-                    IconButton(
-                      icon: const Icon(Icons.playlist_add, size: 34.0),
-                      tooltip: 'Current Selected Playlist',
+                  print(snapshot.data[0]["PlayListName"]);
+                  print(snapshot.data.length);
+                  final snackBar = SnackBar(
+                    content: Text(snapshot.data[0]["PlayListName"], style: TextStyle(fontSize: 25)),
+                    action: SnackBarAction(
+                      label: 'Undo',
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            // Some code to undo the change.
                       },
-                    );
+                    ),
+                  );
+                  return 
+                  IconButton(
+                    icon: const Icon(Icons.playlist_add, size: 34.0),
+                    tooltip: 'Current Selected Playlist',
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                  );
                 } else {
                     return CircularProgressIndicator();
                 };

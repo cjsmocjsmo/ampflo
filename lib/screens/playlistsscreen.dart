@@ -12,14 +12,12 @@ class PlayListScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      
-        drawer: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.purple, //desired color
-          ),
-          child: MyDrawer(),
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.purple, //desired color
         ),
-      // drawer: MyDrawer(),
+        child: MyDrawer(),
+      ),
       body: Container(
       decoration: BoxDecoration(
         color: Colors.purpleAccent.shade400,
@@ -81,9 +79,13 @@ class PlayListScreen extends StatelessWidget {
           //     ]
           //   ) 
           // ),
+          Text("Shit goes here"),
         ]
+        
       ),
-    ));
+      
+    ),
+    );
   }
 }
 
@@ -123,18 +125,6 @@ _buildAddRandomButtonColumn(BuildContext context, String label) {
         },
       ),
       Text(label, style: TextStyle(color: Colors.amber[400])),
-      // Icon(Icons.add_sharp, color: Colors.amber[400]),
-      // Container(
-      //   margin: const EdgeInsets.only(top: 8),
-      //   child: Text(
-      //     label,
-      //     style: TextStyle(
-      //       fontSize: 14,
-      //       fontWeight: FontWeight.w600,
-      //       color: Colors.amber[400],
-      //     ),
-      //   ),
-      // ),
     ],
   );
 }

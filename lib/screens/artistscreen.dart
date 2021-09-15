@@ -6,11 +6,12 @@ class ArtistScreen extends StatelessWidget {
 
   final String apiUrl = "http://192.168.0.91:9090/InitArtistInfo";
 
+  // Future<List<dynamic>> fetchArtists() async {
   Future<List<dynamic>> fetchArtists() async {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
-      // print(json.decode(result.body));
+      print(json.decode(result.body));
       return json.decode(result.body);
     } catch (e) {
       print("OOOOOh Fuck");

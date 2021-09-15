@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'artistscreen.dart';
+import 'modals/albummodal.dart';
 
 class AlbumScreen extends StatelessWidget {
 
   final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
 
-  Future<List<dynamic>> fetchAlbums() async {
+  // Future<List<dynamic>> fetchAlbums() async {
+  Future<AlbumView>> fetchAlbums() async {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
+      print(json.decode(result.body));
       return json.decode(result.body);
     } catch (e) {
       print("OOOOOh Fuck");
