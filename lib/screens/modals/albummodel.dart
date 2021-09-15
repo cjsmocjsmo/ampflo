@@ -1,4 +1,4 @@
-import 'modals/songsmodel.dart';
+import 'screens/modals/songsmodel.dart';
 
 class AlbumView {
 
