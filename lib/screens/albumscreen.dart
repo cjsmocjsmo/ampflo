@@ -6,10 +6,10 @@ import 'modals/albummodel.dart';
 
 class AlbumScreen extends StatelessWidget {
 
-  final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
+  final String apiUrl = "http://192.168.0.91:9090/InitAlbum2Info";
 
   // Future<List<dynamic>> fetchAlbums() async {
-  Future<AlbumView<dynamic>> fetchAlbums() async {
+  Future<AlbumView> fetchAlbums() async {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));

@@ -1,3 +1,5 @@
+import 'modals/songsmodel.dart';
+
 class AlbumView {
 
   const AlbumView({
@@ -17,7 +19,7 @@ class AlbumView {
   final String? ArtistID;
   final String? Album;
   final String? AlbumID;
-  final List<dynamic>? Songs;
+  final List<Songs>? Songs;
   final String? AlbumPage;
   final String? NumSongs;
   final String? PicPath;
