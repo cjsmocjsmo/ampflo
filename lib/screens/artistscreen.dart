@@ -61,12 +61,6 @@ class ArtistScreen extends StatelessWidget {
                             Navigator.of(context).pushNamed('/AlbumsForArtist', arguments: snapshot.data[index]["artistID"]);
                           },
                           child:
-                          // Card(
-                          //   child: ListTile(
-                          //     title: Text('${snapshot.data[index]['artist']}'),
-                          //     trailing: Icon(Icons.chevron_right),
-                          //   ),
-                          // ),
                           Card(
                             child: ListTile(
                               // leading: FlutterLogo(size: 56.0),
@@ -76,16 +70,6 @@ class ArtistScreen extends StatelessWidget {
                               tileColor: Colors.yellowAccent[200],
                             ),
                           ),
-                          // Container(
-                          //   height: 75,
-                          //   color: Colors.purpleAccent[200],
-                          //   child:Center(
-                          //     child: Text(
-                          //       '${snapshot.data[index]['artist']}',
-                          //       style: TextStyle(fontSize: 26, color: Colors.black),
-                          //     ),
-                          //   ),
-                          // ),
                         );
                       });
                   } else {
@@ -95,7 +79,6 @@ class ArtistScreen extends StatelessWidget {
                 }
               ),
           )
-        
         ),
       ),
     );

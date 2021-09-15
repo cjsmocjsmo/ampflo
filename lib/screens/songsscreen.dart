@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
+mport 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'artistscreen.dart';
 import 'modals/albummodel.dart';
 
-class AlbumScreen extends StatelessWidget {
+class SongsScreen extends StatelessWidget {
 
   final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
 
-  Future<List<dynamic>> fetchAlbums() async {
-  // Future<AlbumView> fetchAlbums() async {
+  Future<List<dynamic>> fetchSongs() async {
     var result;
     try {
       var result = await http.get(Uri.parse(apiUrl));
@@ -26,7 +25,7 @@ class AlbumScreen extends StatelessWidget {
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Albums"),
+          title: Text("Songs"),
         ),
         drawer: Theme(
           data: Theme.of(context).copyWith(
@@ -44,7 +43,7 @@ class AlbumScreen extends StatelessWidget {
             child:
               FutureBuilder<List<dynamic>>(
               // FutureBuilder<AlbumView>(
-                future: fetchAlbums(),
+                future: fetchSongs(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
@@ -60,13 +59,12 @@ class AlbumScreen extends StatelessWidget {
                             // final String apiPU = "http://192.168.0.42:8181/OmxplayerPlayMediaReact?medPath=" + ap;
                             // playEpi(apiPU);;
                             // Navigator.of(context).pop();
-                            Navigator.of(context).pushNamed('/Songs', arguments: snapshot.data[index]["albumID"]);
                             
                           },
                           child: Card(
                             child: ListTile(
                               leading: Image.network(snapshot.data[index]["picHttpAddr"]),
-                              title: Text(snapshot.data[index]["album"]),
+                              title: Text(snapshot.data[index]["title"]),
                               tileColor: Colors.yellowAccent[200],
                             ),
                           ),
