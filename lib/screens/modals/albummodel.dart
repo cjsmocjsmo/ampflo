@@ -19,7 +19,7 @@ class AlbumView {
   final String? ArtistID;
   final String? Album;
   final String? AlbumID;
-  final List<Songs>? Songs;
+  final List<Songz>? Songs;
   final String? AlbumPage;
   final String? NumSongs;
   final String? PicPath;
