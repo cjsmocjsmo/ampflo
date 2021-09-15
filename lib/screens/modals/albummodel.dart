@@ -9,7 +9,7 @@ class AlbumView {
     this.AlbumPage, 
     this.NumSongs, 
     this.PicPath, 
-    .Idx
+    this.Idx,
   });
 
   // final int _id;
