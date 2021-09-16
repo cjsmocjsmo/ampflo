@@ -89,7 +89,7 @@ class SongsForAlbumScreen extends StatelessWidget {
                           child: Card(
                             child: ListTile(
                               tileColor: Colors.limeAccent.shade400,
-                              leading: Icon(Icons.play_arrow, size: 32.0),
+                              // leading: Icon(Icons.play_arrow, size: 32.0),
                               title: Text('${snapshot.data[index]['title']}'),
                               trailing: IconButton(
                                 icon: const Icon(Icons.add),

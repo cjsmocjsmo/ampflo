@@ -5,7 +5,7 @@ import 'screens/albumsforartist.dart';
 import 'screens/albumscreen.dart';
 // import 'screens/albumscreen2.dart';
 
-import 'screens/songs.dart';
+import 'screens/songsscreen.dart';
 
 import 'screens/playerscreen.dart';
 import 'screens/playlistsscreen.dart';

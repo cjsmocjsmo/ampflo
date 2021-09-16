@@ -491,7 +491,7 @@ class MediaLibrary {
       album: "Recycler",
       title: "Penthouse Eyes",
       artist: "ZZ Top",
-      duration: Duration(milliseconds: 5739820),
+      duration: Duration(milliseconds: 189000),
       artUri: Uri.parse(
           "http://192.168.0.91:9090/static/ZZ_Top_-_Recycler_thumb.jpg"),
     ),
@@ -501,7 +501,7 @@ class MediaLibrary {
       album: "5150",
       title: "The I Forget Song",
       artist: "Van Halen",
-      duration: Duration(milliseconds: 2856950),
+      duration: Duration(milliseconds: 196000),
       artUri: Uri.parse(
           "http://192.168.0.91:9090/static/Van_Halen_-_Van_Halen_thumb.jpg"
       ),

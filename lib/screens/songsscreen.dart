@@ -1,27 +1,29 @@
-mport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'artistscreen.dart';
-import 'modals/albummodel.dart';
+// import 'modals/albummodel.dart';
 
 class SongsScreen extends StatelessWidget {
 
-  final String apiUrl = "http://192.168.0.91:9090/InitAlbumInfo";
-
-  Future<List<dynamic>> fetchSongs() async {
-    var result;
-    try {
-      var result = await http.get(Uri.parse(apiUrl));
-      // print(json.decode(result.body));
-      return json.decode(result.body);
-    } catch (e) {
-      print("OOOOOh Fuck");
-    }
-    return result;
-  }
+  
 
   @override
   Widget build(BuildContext context) {
+
+
+  Future<List<dynamic>> fetchSongs() async {
+    final albumID = ModalRoute.of(context)?.settings.arguments;
+    final String apiiUrl = "http://192.168.0.91:9090/SongsForAlbum?selected=$albumID";
+    var result = await http.get(Uri.parse(apiiUrl));
+      // print(json.decode(result.body));
+    return json.decode(result.body);
+  }
+
+
+
+    
+
     return Center(
       child: Scaffold(
         appBar: AppBar(
@@ -63,7 +65,7 @@ class SongsScreen extends StatelessWidget {
                           },
                           child: Card(
                             child: ListTile(
-                              leading: Image.network(snapshot.data[index]["picHttpAddr"]),
+                              // leading: Image.network(snapshot.data[index]["picHttpAddr"]),
                               title: Text(snapshot.data[index]["title"]),
                               tileColor: Colors.yellowAccent[200],
                             ),
